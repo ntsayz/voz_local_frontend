@@ -45,7 +45,7 @@
             bind:value={username}
             autocomplete="username"
             required
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-500 sm:text-sm/6"
           />
         </div>
       </div>
@@ -65,7 +65,7 @@
             bind:value={password}
             autocomplete="current-password"
             required
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-500 sm:text-sm/6"
           />
         </div>
       </div>
@@ -86,7 +86,7 @@
     </form>
   
     <p class="mt-10 text-center text-sm/6 text-primary-500">
-      <a href="#" class="font-semibold text-primary-500 hover:text-primary-900">Registe-se</a>
+      <a href="/register" class="font-semibold text-primary-500 hover:text-primary-900">Registe-se</a>
     </p>
   </div>
   
