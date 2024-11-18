@@ -6,5 +6,5 @@ export const login = async (username: string, password: string) => {
 };
 
 export const register = async (username: string, password: string, role: string) => {
-  return apiRequest('/auth/register', 'POST', { username, password, role });
+  return apiRequest('/auth/register', 'POST', { username, password, role : "public" });
 };
