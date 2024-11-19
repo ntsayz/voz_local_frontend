@@ -1,10 +1,13 @@
 <script lang="ts">
     import { locations } from '$lib/stores/locations';
     import { get } from 'svelte/store';
+    import Header from '$lib/components/Header.svelte';
+    import Footer from '$lib/components/Footer.svelte';
   
     const localLocations = get(locations); // Retrieve the current state of locations
   </script>
   
+    <Header />
   {#if localLocations.length > 0}
     <h2>Available Locations</h2>
     <ul>
@@ -22,4 +25,6 @@
   {:else}
     <p>Loading locations...</p>
   {/if}
+
+  <Footer/>
   
