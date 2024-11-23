@@ -33,73 +33,74 @@
   }
 </script>
 
-<Header />
+<div class="flex flex-col min-h-screen">
+  <Header />
 
-<main class="flex flex-col md:flex-row h-screen">
-  <!-- Side Panel -->
-  <aside
-    class="bg-white shadow-lg md:w-1/3 w-full p-6 h-full overflow-y-auto md:border-r border-gray-300"
-  >
-    <!-- Default Region Info -->
-    <div class="default-content">
-      <h2 class="text-2xl font-bold text-gray-800">Reports in Your Region</h2>
-      <p class="text-gray-600 text-lg mt-4">
-        Explore the map to learn about reports in other regions. Click on a region for more details.
-      </p>
-    </div>
-
-    <!-- Selected Province Details -->
-    {#if selectedProvince}
-      <div
-        class="selected-content mt-6 border-t border-gray-300 pt-4 transition-opacity duration-300"
-      >
-        <button
-          class="absolute top-4 right-4 text-red-500 text-2xl font-bold"
-          on:click={closeDetailsPanel}
-        >
-          &times;
-        </button>
-        <h2 class="text-2xl font-bold text-gray-800">
-          {provinces.find((p) => p.id === selectedProvince)?.name || "Province Details"}
-        </h2>
+  <main class="flex flex-1 flex-col md:flex-row">
+    <!-- Painel Lateral -->
+    <aside
+      class="bg-white shadow-lg md:w-1/3 w-full p-6 h-full overflow-y-auto md:border-r border-gray-300"
+    >
+      <!-- Informação Inicial -->
+      <div class="default-content">
+        <h2 class="text-2xl font-bold text-gray-800">Ocorrências</h2>
         <p class="text-gray-600 text-lg mt-4">
-          <span class="font-medium">Number of reports:</span> {reportsData[selectedProvince]?.count || 0}
+          Explore o mapa para saber mais sobre as ocorrências noutras regiões. Clique numa região para mais detalhes.
         </p>
-        <ul class="mt-4 space-y-2 text-gray-700 text-sm">
-          {#each reportsData[selectedProvince]?.details || [] as detail}
-            <li class="flex items-start">
-              <span class="w-2 h-2 mt-1.5 rounded-full bg-blue-500 mr-2"></span> {detail}
-            </li>
-          {/each}
-        </ul>
       </div>
-    {/if}
-  </aside>
 
-  <!-- Map Section -->
-  <div class="map-container flex-1 flex items-center justify-center relative bg-gray-100">
-    <Map
-      {provinces}
-      data={reportsData}
-      {colorScale}
-      onProvinceClick={handleProvinceClick}
-      tooltipFormatter={tooltipFormatter}
-    />
-    {#if !selectedProvince}
-      <p class="absolute bottom-4 left-4 bg-gray-800 text-white px-4 py-2 rounded-md shadow-md text-sm">
-        Click on a province to see details.
-      </p>
-    {/if}
-  </div>
-</main>
+      <!-- Detalhes da Província Selecionada -->
+      {#if selectedProvince}
+        <div
+          class="selected-content mt-6 border-t border-gray-300 pt-4 transition-opacity duration-300"
+        >
+          <button
+            class="absolute top-4 right-4 text-red-500 text-2xl font-bold"
+            on:click={closeDetailsPanel}
+          >
+            &times;
+          </button>
+          <h2 class="text-2xl font-bold text-gray-800">
+            {provinces.find((p) => p.id === selectedProvince)?.name || "Detalhes da Província"}
+          </h2>
+          <p class="text-gray-600 text-lg mt-4">
+            <span class="font-medium">Número de ocorrências:</span> {reportsData[selectedProvince]?.count || 0}
+          </p>
+          <ul class="mt-4 space-y-2 text-gray-700 text-sm">
+            {#each reportsData[selectedProvince]?.details || [] as detail}
+              <li class="flex items-start">
+                <span class="w-2 h-2 mt-1.5 rounded-full bg-blue-500 mr-2"></span> {detail}
+              </li>
+            {/each}
+          </ul>
+        </div>
+      {/if}
+    </aside>
 
-<Footer />
+    <!-- Seção do Mapa -->
+    <div class="map-container flex-1 flex items-center justify-center relative bg-gray-100">
+      <Map
+        {provinces}
+        data={reportsData}
+        {colorScale}
+        onProvinceClick={handleProvinceClick}
+        tooltipFormatter={tooltipFormatter}
+      />
+      {#if !selectedProvince}
+        <p class="absolute bottom-4 left-4 bg-gray-800 text-white px-4 py-2 rounded-md shadow-md text-sm">
+          Clique numa província para ver os detalhes.
+        </p>
+      {/if}
+    </div>
+  </main>
+
+  <Footer />
+</div>
 
 <style>
   main {
     display: flex;
     flex-direction: column;
-    height: 100%;
   }
 
   @media (min-width: 768px) {
@@ -130,5 +131,9 @@
       transform: translateY(0);
       opacity: 1;
     }
+  }
+
+  footer {
+    flex-shrink: 0;
   }
 </style>
