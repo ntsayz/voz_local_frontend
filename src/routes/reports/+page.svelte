@@ -3,7 +3,7 @@
     import Footer from '$lib/components/Footer.svelte';
   </script>
   
-  <Header />
+  <Header/>
   
   <main class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="text-center">
