@@ -104,6 +104,7 @@
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         {#if currentAuth.user}
           <!-- Logged-in User Dropdown -->
+          <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white">{currentAuth.user?.username}</a>
           <div class="relative ml-3">
             <button
               type="button"
@@ -147,6 +148,7 @@
             Login
           </a>
         {/if}
+        
       </div>
     </div>
   </div>
