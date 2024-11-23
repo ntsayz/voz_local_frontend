@@ -1,6 +1,7 @@
 <script>
     import Header from '$lib/components/Header.svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import Map from '$lib/components/Map.svelte';
   </script>
   
   <Header/>
@@ -8,6 +9,9 @@
   <main class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="text-center">
       <h1 class="text-4xl font-bold mb-4">Reports</h1>
+      <div class="w-full max-w-4xl">
+        <Map />
+      </div>
     </div>
   </main>
 
