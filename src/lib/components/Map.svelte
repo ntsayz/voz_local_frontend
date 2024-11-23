@@ -84,7 +84,7 @@
     <div
         class="tooltip"
         style="top: {mouseY}px; left: {mouseX}px;"
-        >
+        > {hoveredProvince}
         {tooltipFormatter(hoveredProvince, data[hoveredProvince])}
         </div>
     {/if}
