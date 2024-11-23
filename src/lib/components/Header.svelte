@@ -82,12 +82,13 @@
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
           >Home</a>
+          {#if currentAuth.user?.role === 'admin'}
           <a
             href="/dashboard"
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/dashboard' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
           >Dashboard</a>
-        
+          {/if}
           <a
             href="/reports"
             class="rounded-md px-3 py-2 text-sm font-medium 
@@ -157,11 +158,13 @@
         {currentPath === '/' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
         aria-current="page"
       >Home</a>
+      {#if currentAuth.user?.role === 'admin'}
       <a
         href="/dashboard"
         class="block rounded-md px-3 py-2 text-base font-medium 
         {currentPath === '/dashboard' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
       >Dashboard</a>
+      {/if}
       <a
         href="/reports"
         class="block rounded-md px-3 py-2 text-base font-medium 
