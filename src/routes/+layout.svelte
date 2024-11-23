@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { fetchLocations } from '$lib/stores/locations';
 
-	export let data; // This is required to ensure `data` from parent layouts is accessible.
+	export const data = undefined; // Use `export const` for external references
 
 	onMount(() => {
 		console.log('Loading locations');

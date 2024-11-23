@@ -15,7 +15,7 @@
       </div>
   
       <div class="mt-4 text-center text-gray-400 text-xs">
-        Made with ❤️ in Mozambique.
+        Made with ❤️ for Mozambique.
       </div>
     </div>
   </footer>

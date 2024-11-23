@@ -6,6 +6,7 @@
   let currentAuth: AuthState;
   let currentPath: string; // Holds the current path from the $page store
   let isMobileMenuOpen = false; // State for mobile menu visibility
+  let isDropdownOpen = false; // State to toggle dropdown visibility
 
   const unsubscribeAuth = auth.subscribe((value) => {
     currentAuth = value;
@@ -17,6 +18,10 @@
 
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen; // Toggle the menu state
+  }
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen; // Toggle the dropdown state
   }
 
   function logout() {
@@ -41,27 +46,25 @@
         >
           <span class="sr-only">Open main menu</span>
           <svg
-          class="h-6 w-6 {isMobileMenuOpen ? 'hidden' : 'block'}"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-
-        <svg
-          class="h-6 w-6 {isMobileMenuOpen ? 'block' : 'hidden'}"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-        </svg>
-
+            class="h-6 w-6 {isMobileMenuOpen ? 'hidden' : 'block'}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg
+            class="h-6 w-6 {isMobileMenuOpen ? 'block' : 'hidden'}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
 
@@ -106,31 +109,34 @@
               type="button"
               class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               id="user-menu-button"
-              aria-expanded="false"
+              aria-expanded={isDropdownOpen}
               aria-haspopup="true"
+              on:click={toggleDropdown}
             >
               <span class="sr-only">Open user menu</span>
               <img
                 class="h-8 w-8 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                src="https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
                 alt="User Avatar"
               />
             </button>
-            <div
-              class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="user-menu-button"
-              tabindex="-1"
-            >
-              <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Your Profile</a>
-              <button
-                class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                on:click={logout}
+            {#if isDropdownOpen}
+              <div
+                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="user-menu-button"
+                tabindex="-1"
               >
-                Sign out
-              </button>
-            </div>
+                <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Your Profile</a>
+                <button
+                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  on:click={logout}
+                >
+                  Sign out
+                </button>
+              </div>
+            {/if}
           </div>
         {:else}
           <!-- Login Button -->
