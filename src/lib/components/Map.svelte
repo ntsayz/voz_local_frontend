@@ -79,15 +79,6 @@
          </circle>
         </g>
        </svg>
-  
-       {#if hoveredProvince}
-    <div
-        class="tooltip"
-        style="top: {mouseY}px; left: {mouseX}px;"
-        > {hoveredProvince}
-        {tooltipFormatter(hoveredProvince, data[hoveredProvince])}
-        </div>
-    {/if}
     </div>
 
     
