@@ -10,22 +10,23 @@
     let loading = false;
   
     async function handleSubmit(event: Event) {
-        event.preventDefault();
-        error = '';
-        loading = true;
+      event.preventDefault();
+      error = '';
+      loading = true;
 
-        try {
-        const { token, user } = await login(username, password); // Using the modular login function
-        auth.set({ token, user });
+      try {
+        const { token, user } = await login(username, password);
+        auth.set({ token, user }); // Save token and user (with role) to store
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
         goto('/');
-        } catch (err) {
-        error = (err as Error).message; // Handle API errors
-        } finally {
+      } catch (err) {
+        error = (err as Error).message;
+      } finally {
         loading = false;
-        }
+      }
     }
+
 
   </script>
   

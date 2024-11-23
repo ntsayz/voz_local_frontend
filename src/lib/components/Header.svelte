@@ -22,6 +22,7 @@
   function logout() {
     auth.set({ token: null, user: null });
     localStorage.removeItem('token');
+    localStorage.removeItem('auth');
     goto('/login');
   }
 </script>
@@ -86,11 +87,7 @@
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/dashboard' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
           >Dashboard</a>
-          <a
-            href="/settings"
-            class="rounded-md px-3 py-2 text-sm font-medium 
-            {currentPath === '/settings' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Settings</a>
+        
           <a
             href="/reports"
             class="rounded-md px-3 py-2 text-sm font-medium 
@@ -126,7 +123,6 @@
               tabindex="-1"
             >
               <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Your Profile</a>
-              <a href="/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Settings</a>
               <button
                 class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 on:click={logout}
@@ -166,11 +162,6 @@
         class="block rounded-md px-3 py-2 text-base font-medium 
         {currentPath === '/dashboard' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
       >Dashboard</a>
-      <a
-        href="/settings"
-        class="block rounded-md px-3 py-2 text-base font-medium 
-        {currentPath === '/settings' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-      >Settings</a>
       <a
         href="/reports"
         class="block rounded-md px-3 py-2 text-base font-medium 
