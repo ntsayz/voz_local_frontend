@@ -155,7 +155,7 @@
         }
 
         try {
-            await register(username, email, password, phone, citizenInfo);
+            await register(username, email, password);
             goto('/login');
         } catch (err) {
             error = (err as Error).message;
