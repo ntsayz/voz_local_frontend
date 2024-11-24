@@ -37,7 +37,7 @@
       {/if}
   
       <div>
-        <label for="username" class="block text-sm/6 font-medium text-primary-500">Username</label>
+        <label for="username" class="block text-sm/6 font-medium text-primary-500">Nome do utilizador</label>
         <div class="mt-2">
           <input
             id="username"
@@ -55,7 +55,7 @@
         <div class="flex items-center justify-between">
           <label for="password" class="block text-sm/6 font-medium text-primary-500">Password</label>
           <div class="text-sm text-primary-500">
-            <a href="/forgot-password" class="font-semibold text-primary hover:text-brand_grey-500">Forgot password?</a>
+            <a href="/forgot-password" class="font-semibold text-primary hover:text-brand_grey-500">Esqueceu-se da sua password?</a>
           </div>
         </div>
         <div class="mt-2">
@@ -80,7 +80,7 @@
           {#if loading}
             Signing in...
           {:else}
-            Sign in
+            Entrar
           {/if}
         </button>
       </div>
