@@ -101,6 +101,7 @@
       </div>
 
       <!-- Profile / Auth Section -->
+      <!-- Profile / Auth Section -->
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         {#if currentAuth.user}
           <!-- Logged-in User Dropdown -->
@@ -138,7 +139,7 @@
               </div>
             {/if}
           </div>
-        {:else}
+        {:else if currentPath !== '/login' && currentPath !== '/register'}
           <!-- Login Button -->
           <a
             href="/login"
@@ -148,6 +149,7 @@
           </a>
         {/if}
       </div>
+
     </div>
   </div>
 
