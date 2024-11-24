@@ -19,7 +19,7 @@
 			href="/" 
 			class="mt-6 inline-block bg-gray-800 text-gray-200 px-6 py-3 rounded-lg hover:bg-gray-700 hover:text-white transition"
 		>
-			Go back home
+			Voltar para a página principal
 		</a>
 	</div>
 </div>

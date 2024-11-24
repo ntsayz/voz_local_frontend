@@ -32,10 +32,10 @@
   }
 </script>
 
-<nav class="bg-gray-800">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+<nav class="bg-gray-800 shadow-md">
+  <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
-      <!-- Mobile menu button -->
+      <!-- Mobile Menu Button -->
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <button
           type="button"
@@ -44,7 +44,7 @@
           aria-expanded={isMobileMenuOpen}
           on:click={toggleMobileMenu}
         >
-          <span class="sr-only">Open main menu</span>
+          <span class="sr-only">Abrir menu principal</span>
           <svg
             class="h-6 w-6 {isMobileMenuOpen ? 'hidden' : 'block'}"
             fill="none"
@@ -83,20 +83,20 @@
           <a
             href="/"
             class="rounded-md px-3 py-2 text-sm font-medium 
-            {currentPath === '/' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Home</a>
+            {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
+          >Início</a>
           {#if currentAuth.user?.role === 'admin'}
           <a
             href="/dashboard"
             class="rounded-md px-3 py-2 text-sm font-medium 
-            {currentPath === '/dashboard' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Dashboard</a>
+            {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
+          >Painel</a>
           {/if}
           <a
             href="/reports"
             class="rounded-md px-3 py-2 text-sm font-medium 
-            {currentPath === '/reports' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Reports</a>
+            {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
+          >Avisos e Ocorrências</a>
         </div>
       </div>
 
@@ -104,7 +104,6 @@
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         {#if currentAuth.user}
           <!-- Logged-in User Dropdown -->
-          <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white">{currentAuth.user?.username}</a>
           <div class="relative ml-3">
             <button
               type="button"
@@ -114,11 +113,11 @@
               aria-haspopup="true"
               on:click={toggleDropdown}
             >
-              <span class="sr-only">Open user menu</span>
+              <span class="sr-only">Abrir menu do utilizador</span>
               <img
                 class="h-8 w-8 rounded-full"
                 src="https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
-                alt="User Avatar"
+                alt="Avatar do utilizador"
               />
             </button>
             {#if isDropdownOpen}
@@ -129,12 +128,12 @@
                 aria-labelledby="user-menu-button"
                 tabindex="-1"
               >
-                <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Your Profile</a>
+                <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Perfil</a>
                 <button
                   class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   on:click={logout}
                 >
-                  Sign out
+                  Sair
                 </button>
               </div>
             {/if}
@@ -143,12 +142,11 @@
           <!-- Login Button -->
           <a
             href="/login"
-            class="rounded-md bg-primary-900 px-3 py-2 text-sm font-medium text-white hover:bg-gray-900"
+            class="rounded-md bg-primary-500 px-3 py-2 text-sm font-medium text-white hover:bg-primary-700"
           >
-            Login
+            Entrar
           </a>
         {/if}
-        
       </div>
     </div>
   </div>
@@ -163,21 +161,20 @@
       <a
         href="/"
         class="block rounded-md px-3 py-2 text-base font-medium 
-        {currentPath === '/' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-        aria-current="page"
-      >Home</a>
+        {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
+      >Início</a>
       {#if currentAuth.user?.role === 'admin'}
       <a
         href="/dashboard"
         class="block rounded-md px-3 py-2 text-base font-medium 
-        {currentPath === '/dashboard' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-      >Dashboard</a>
+        {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
+      >Painel</a>
       {/if}
       <a
         href="/reports"
         class="block rounded-md px-3 py-2 text-base font-medium 
-        {currentPath === '/reports' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-      >Reports</a>
+        {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
+      >Relatórios</a>
     </div>
   </div>
 </nav>
