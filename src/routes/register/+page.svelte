@@ -365,7 +365,7 @@
                   {#if selectedDistrict && subLocations.length > 0}
                   <div>
                       <label for="sub-location" class="block text-sm font-medium text-primary-500">
-                          {subLocationType === 'bairro' ? 'Bairro' : 'Posto Administrativo / Bairro'}
+                          {subLocationType === 'bairro' ? 'Bairro' : 'Posto Administrativo'}
                       </label>
                       <select
                           id="sub-location"
@@ -373,7 +373,7 @@
                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                           bind:value={selectedSubLocation}
                       >
-                          <option disabled selected value="">Selecione uma Sub-Locação</option>
+                          <option disabled selected value="">Selecione</option>
                           {#each subLocations as subLocation}
                               <option value={subLocation.id}>
                                   {subLocation.name}
