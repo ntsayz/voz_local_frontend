@@ -3,29 +3,13 @@
     import Footer from '$lib/components/Footer.svelte';
     import { mockSurveys } from '$lib/data/mock/surveys';
   
-    let searchQuery = '';
     let filteredSurveys = mockSurveys;
-  
-    function filterSurveys() {
-      filteredSurveys = mockSurveys.filter((survey) =>
-        survey.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
   </script>
   
   <Header />
   
-  <main class="container mx-auto p-6 min-h-screen">
-    <div class="flex justify-between items-center mb-6">
-      <h1 class="text-3xl font-bold text-gray-800">Surveys</h1>
-      <input
-        type="text"
-        class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Search surveys..."
-        bind:value={searchQuery}
-        on:input={filterSurveys}
-      />
-    </div>
+  <main class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Popular Surveys</h1>
   
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {#each filteredSurveys as survey (survey.id)}
@@ -34,17 +18,50 @@
         >
           <h2 class="text-xl font-bold text-gray-800">{survey.title}</h2>
           <p class="text-gray-600 text-sm mt-2">{survey.description}</p>
-          <div class="mt-4 flex justify-between items-center">
-            <span
-              class="text-xs font-bold uppercase px-3 py-1 rounded-full"
-              class:!bg-green-100="{survey.status === 'Active'}"
-              class:!bg-gray-200="{survey.status === 'Closed'}"
-              class:!text-green-600="{survey.status === 'Active'}"
-              class:!text-gray-500="{survey.status === 'Closed'}"
-            >
-              {survey.status}
-            </span>
-            <span class="text-xs text-gray-500">{survey.responses} responses</span>
+          <div class="mt-4">
+            {#if survey.type === 'multiple_choice' || survey.type === 'single_choice'}
+              {#each survey.options as option}
+                <div class="flex items-center justify-between">
+                  <span>{option.label}</span>
+                  <span class="text-sm text-gray-500">{option.value} votes</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div
+                    class="bg-blue-500 h-2.5 rounded-full"
+                    style="width: {option.value / survey.responses * 100}%"
+                  ></div>
+                </div>
+              {/each}
+            {/if}
+  
+            {#if survey.type === 'rating'}
+              <p class="text-sm text-gray-500 mt-2">Rating: {survey.options[0].value} / {survey.options[0].max}</p>
+            {/if}
+  
+            {#if survey.type === 'binary'}
+              <div class="flex items-center justify-between">
+                <span>Yes: {survey.options[0].value}</span>
+                <span>No: {survey.options[1].value}</span>
+              </div>
+              <div class="flex mt-2">
+                <div
+                  class="bg-green-500 h-2.5 rounded-l-full"
+                  style="width: {survey.options[0].value / survey.responses * 100}%"
+                ></div>
+                <div
+                  class="bg-red-500 h-2.5 rounded-r-full"
+                  style="width: {survey.options[1].value / survey.responses * 100}%"
+                ></div>
+              </div>
+            {/if}
+  
+            {#if survey.type === 'open_ended'}
+              <ul class="mt-2 text-sm text-gray-500">
+                {#each survey.options[0].value as comment}
+                  <li>• {comment}</li>
+                {/each}
+              </ul>
+            {/if}
           </div>
           <button
             class="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-200"
