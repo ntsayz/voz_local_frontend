@@ -33,51 +33,12 @@
   }
 </script>
 
+
 <div class="flex flex-col min-h-screen">
   <Header />
 
-  <main class="flex flex-1 flex-col md:flex-row">
-    <!-- Painel Lateral -->
-    <aside
-      class="bg-white shadow-lg md:w-1/3 w-full p-6 h-full overflow-y-auto md:border-r border-gray-300"
-    >
-      <!-- Informação Inicial -->
-      <div class="default-content">
-        <h2 class="text-2xl font-bold text-gray-800">Ocorrências</h2>
-        <p class="text-gray-600 text-lg mt-4">
-          Explore o mapa para saber mais sobre as ocorrências noutras regiões. Clique numa região para mais detalhes.
-        </p>
-      </div>
-
-      <!-- Detalhes da Província Selecionada -->
-      {#if selectedProvince}
-        <div
-          class="selected-content mt-6 border-t border-gray-300 pt-4 transition-opacity duration-300"
-        >
-          <button
-            class="absolute top-4 right-4 text-red-500 text-2xl font-bold"
-            on:click={closeDetailsPanel}
-          >
-            &times;
-          </button>
-          <h2 class="text-2xl font-bold text-gray-800">
-            {provinces.find((p) => p.id === selectedProvince)?.name || "Detalhes da Província"}
-          </h2>
-          <p class="text-gray-600 text-lg mt-4">
-            <span class="font-medium">Número de ocorrências:</span> {reportsData[selectedProvince]?.count || 0}
-          </p>
-          <ul class="mt-4 space-y-2 text-gray-700 text-sm">
-            {#each reportsData[selectedProvince]?.details || [] as detail}
-              <li class="flex items-start">
-                <span class="w-2 h-2 mt-1.5 rounded-full bg-blue-500 mr-2"></span> {detail}
-              </li>
-            {/each}
-          </ul>
-        </div>
-      {/if}
-    </aside>
-
-    <!-- Seção do Mapa -->
+  <main class="flex flex-1 relative">
+    <!-- Map Section -->
     <div class="map-container flex-1 flex items-center justify-center relative bg-gray-100">
       <Map
         {provinces}
@@ -92,6 +53,44 @@
         </p>
       {/if}
     </div>
+
+    <!-- Modal Overlay -->
+    {#if selectedProvince}
+      <div
+        class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50"
+        role="dialog"
+        aria-labelledby="province-title"
+        aria-describedby="province-description"
+        tabindex="0"
+        on:click|self={closeDetailsPanel}
+        on:keydown={(event) => event.key === 'Escape' && closeDetailsPanel()}
+      >
+        <div
+          class="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative transform transition-transform ease-out duration-300 scale-100 translate-y-0 animate-fade-in-down"
+        >
+          <button
+            class="absolute top-4 right-4 text-red-500 text-2xl font-bold"
+            on:click={closeDetailsPanel}
+          >
+            &times;
+          </button>
+          <h2 id="province-title" class="text-2xl font-bold text-gray-800">
+            {provinces.find((p) => p.id === selectedProvince)?.name || "Detalhes da Província"}
+          </h2>
+          <p id="province-description" class="text-gray-600 text-lg mt-4">
+            <span class="font-medium">Número de ocorrências:</span> {reportsData[selectedProvince]?.count || 0}
+          </p>
+          <ul class="mt-4 space-y-2 text-gray-700 text-sm">
+            {#each reportsData[selectedProvince]?.details || [] as detail}
+              <li class="flex items-start">
+                <span class="w-2 h-2 mt-1.5 rounded-full bg-blue-500 mr-2"></span> {detail}
+              </li>
+            {/each}
+          </ul>
+        </div>
+      </div>
+    {/if}
+
   </main>
 
   <Footer />

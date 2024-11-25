@@ -11,6 +11,20 @@ export default {
   ],
   theme: {
     extend: {
+      animation: {
+        'fade-in-down': 'fade-in-down 0.3s ease-out',
+      },keyframes: {
+        'fade-in-down': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-10%)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+      },
       colors: {
         primary: {
           50: '#E3EDF3',  // Lightest shade
