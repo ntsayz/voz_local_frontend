@@ -9,7 +9,7 @@
     let mouseX = 0;
     let mouseY = 0;
 
-    console.log(data[0]);
+    //console.log(data[0]);
   
     function handleMouseMove(event: MouseEvent) {
       mouseX = event.clientX + 10;

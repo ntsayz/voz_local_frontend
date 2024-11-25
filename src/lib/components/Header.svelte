@@ -97,6 +97,11 @@
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
           >Avisos e Ocorrências</a>
+          <a
+            href="/surveys"
+            class="rounded-md px-3 py-2 text-sm font-medium 
+            {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
+          >Sondagens</a>
         </div>
       </div>
 
@@ -176,7 +181,12 @@
         href="/reports"
         class="block rounded-md px-3 py-2 text-base font-medium 
         {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-      >Relatórios</a>
+      >Avisos e Ocorrências</a>
+      <a
+        href="/surveys"
+        class="block rounded-md px-3 py-2 text-base font-medium 
+        {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
+      >Sondagens</a>
     </div>
   </div>
 </nav>
