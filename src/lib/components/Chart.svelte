@@ -1,21 +1,35 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import Chart from 'chart.js/auto';
+    import type { ChartConfiguration, ChartType, ChartTypeRegistry } from 'chart.js';
   
-    export let survey;
+    // Define types for the survey data
+    type Option = {
+      label: string;
+      value: number;
+      max?: number; // For rating surveys
+    };
   
-    let canvas;
-    let chartInstance;
+    type Survey = {
+      type: 'multiple_choice' | 'single_choice' | 'binary' | 'rating';
+      options: Option[];
+      responses: number;
+    };
+  
+    export let survey: Survey; // Ensure survey prop has a defined type
+  
+    let canvas: HTMLCanvasElement | null = null; // Explicitly define the canvas type
+    let chartInstance: Chart | null = null; // Explicitly define the Chart instance type
   
     // Dynamically generate chart data and type
-    function getChartConfig(survey) {
+    function getChartConfig(survey: Survey): ChartConfiguration | null {
       const { type, options, responses } = survey;
   
       switch (type) {
         case 'multiple_choice':
         case 'single_choice':
           return {
-            type: 'bar',
+            type: 'bar' as ChartType,
             data: {
               labels: options.map((o) => o.label),
               datasets: [
@@ -33,9 +47,10 @@
               },
             },
           };
+  
         case 'binary':
           return {
-            type: 'pie',
+            type: 'pie' as ChartType,
             data: {
               labels: options.map((o) => o.label),
               datasets: [
@@ -52,15 +67,16 @@
               },
             },
           };
+  
         case 'rating':
           return {
-            type: 'radialGauge',
+            type: 'doughnut' as ChartType, // Doughnut chart for ratings
             data: {
+              labels: [`Rating: ${options[0].value}/${options[0].max}`],
               datasets: [
                 {
-                  data: [options[0].value],
-                  backgroundColor: ['#4caf50'],
-                  label: `Average Rating: ${options[0].value} / ${options[0].max}`,
+                  data: [options[0].value, options[0].max! - options[0].value],
+                  backgroundColor: ['#4caf50', '#e0e0e0'], // Fill remaining with a neutral color
                 },
               ],
             },
@@ -69,14 +85,15 @@
               plugins: {
                 legend: { display: false },
               },
-              scales: {
-                r: {
-                  min: 0,
-                  max: options[0].max,
+              elements: {
+                arc: {
+                  borderWidth: 0,
+                  cutout: '80%', // Nested under elements.arc for doughnut charts
                 },
               },
             },
           };
+  
         default:
           return null;
       }
@@ -84,7 +101,7 @@
   
     onMount(() => {
       const config = getChartConfig(survey);
-      if (config) {
+      if (config && canvas) {
         chartInstance = new Chart(canvas, config);
       }
   
