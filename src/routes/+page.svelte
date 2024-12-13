@@ -63,7 +63,7 @@
       class="text-4xl font-extrabold mb-6 text-primary-500 leading-tight"
       data-aos="fade-up"
     >
-    {$t('welcome')}
+    {$t('home.welcome')}
     </h1>
     
     <!-- Subheading -->
