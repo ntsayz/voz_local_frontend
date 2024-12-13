@@ -32,7 +32,7 @@ export const mockSurveys = [
   {
     id: '2',
     title: 'Uso de Redes Sociais',
-    description: 'Qual rede social você mais utiliza para se informar ou se entreter?',
+    description: 'Qual é a rede social você mais utiliza para se informar ou se entreter?',
     type: 'single_choice',
     status: 'active',
     locale : "pt",
@@ -188,7 +188,7 @@ export const mockSurveys = [
   },
   {
     id: '12',
-    title: 'Qual elemento da cultura local deve ser mais promovido?',
+    title: 'Qual é o elemento da cultura local deve ser mais promovido?',
     description: 'Avaliar a perceção sobre o fortalecimento cultural em festivais, escolas e eventos comunitários.',
     type: 'multiple_choice',
     status: 'active',
@@ -221,7 +221,7 @@ export const mockSurveys = [
   },
   {
     id: '19',
-    title: 'Qual a tua principal preocupação com a saúde pública?',
+    title: 'Qual é a tua principal preocupação com a saúde pública?',
     description: 'Indica qual destas questões te parece mais urgente na área de saúde pública.',
     type: 'single_choice',
     status: 'closed',
