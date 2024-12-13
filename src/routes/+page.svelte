@@ -16,27 +16,25 @@
       status: 'Ativo',
       category: 'Transporte',
       results: [
-        { label: 'Transporte público (Chapa, autocarro, etc.)', votes: 60 },
+        { label: 'Transporte público (Chapa, autocarro)', votes: 60 },
         { label: 'Veículo pessoal', votes: 25 },
-        { label: 'Transporte privado (Táxi, Yango, etc.)', votes: 25 },
+        { label: 'Transporte privado (Táxi, Yango)', votes: 25 },
         { label: 'A pé', votes: 20 },
       ],
       totalVotes: 130,
     },
     {
-        id: '10',
-        title: 'Qual tecnologia digital traria mais benefícios para o teu dia-a-dia?',
-        description: 'Explorar a perceção da população sobre avanços tecnológicos no trabalho, estudo ou serviços públicos.',
-        type: 'multiple_choice',
+        id: '6',
+        title: 'Percepção sobre a Transformação Digital',
+        description: 'Como é que acha que a transformação digital poderia beneficiar a sua comunidade?',
+        type: 'ranking',
         status: 'Ativo',
-        category: 'Tecnologia',
+        category: ' Tecnologia',
         results: [
-          { label: 'Internet acessível e rápida', votes: 70 },
-          { label: 'Plataformas de ensino à distância', votes: 50 },
-          { label: 'Digitalização de serviços públicos (licenças, registos)', votes: 40 },
-          { label: 'Aplicações móveis para transporte e mapas', votes: 30 },
+          { label: 'Acesso a consultas e serviços de saúde online', rank: 1 },
+          { label: 'Acesso online a serviços públicos e administrativos', rank: 2 },
+          { label: 'Digitalizaçao de documentos de identificaçao', rank: 3 },
         ],
-        totalVotes: 190,
       },
   ];
 
@@ -119,15 +117,20 @@
         </p>
       </div>
     </div>
+    <div>
+
 
     <!-- Surveys Section -->
     <h3 
-      class="text-2xl font-extrabold mb-6 text-primary-500"
+      class="text-2xl text-left font-extrabold mb-6 text-primary-500 pt-12"
       data-aos="fade-up"
       data-aos-delay="400"
     >
       Faça ouvir a sua opinião
     </h3>
+    <p class="text-gray-600 pt-6" data-aos="fade-up" data-aos-delay="800">
+      Sua voz tem poder. Participe, vote e compartilhe sua visão. Ao ouvir diferentes perspectivas e unir forças, podemos transformar desafios em oportunidades e construir uma comunidade mais forte e conectada. Juntos, conduzimos as mudanças que desejamos ver.
+    </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
       {#each mockSurveys as survey (survey.id)}
@@ -139,7 +142,26 @@
         </div>
       {/each}
     </div>
+    
+    
 
+  </div>
+
+  <div class="pt-12">
+    <h3 
+      class="text-2xl text-left font-extrabold mb-6 text-primary-500"
+      data-aos="fade-up"
+      data-aos-delay="400"
+    >
+      Pensamos em todos!
+    </h3>
+      <img
+          src="demo/locations1.png"
+          alt="Mozambique Issue Reports"
+          class="w-128 h-64 mb-4 text-primary-300"
+          data-aos="zoom-in"
+        />
+  </div>
     <!-- Call to Action -->
     <div 
       class="mt-12"
