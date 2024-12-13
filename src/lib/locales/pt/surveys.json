@@ -15,12 +15,21 @@
     "dropdowns": {
     "category": {
         "all": "Todos",
-        "select": "Selecione uma Categoria"
-    },
-    "sortOrder": {
-        "default": "Padrão",
-        "status": "Estado (Ativo/Encerrado)",
-        "category": "Categoria"
+        "transport": "Transporte",
+        "infrastructure": "Infraestrutura",
+        "technology": "Tecnologia",
+        "economy": "Economia",
+        "environment": "Ambiente",
+        "health": "Saúde",
+        "education": "Educação",
+        "culture": "Cultura",
+        "energy": "Energia",
+        "select": "Selecione uma Categoria",
+        "sortOrder": {
+            "default": "Padrão",
+            "status": "Estado (Ativo/Encerrado)",
+            "category": "Categoria"
+        }
     }
     },
     "surveyCard": {
