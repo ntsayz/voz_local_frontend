@@ -34,7 +34,7 @@
         return 0; // Default order
       });
   </script>
-  
+<div class="page-container">
   <Header />
   
   <main class="container mx-auto p-6">
@@ -182,3 +182,18 @@
   
   <Footer />
   
+</div>
+
+<style>
+  /* Ensure the entire page is at least the full viewport height */
+  .page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Make the main content take up remaining space */
+  main {
+    flex: 1;
+  }
+</style>
