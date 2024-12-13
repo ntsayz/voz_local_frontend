@@ -1,0 +1,13 @@
+{
+    "auth": {
+      "login": {
+        "title": "Login to your account",
+        "button": "Login"
+      },
+      "register": {
+        "title": "Create a new account",
+        "button": "Sign Up"
+      }
+    }
+  }
+  

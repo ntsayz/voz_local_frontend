@@ -1,0 +1,13 @@
+{
+  "footer": {
+      "contact": "Entre em contato conosco",
+      "terms": "Termos de Uso",
+      "privacy": "Política de Privacidade"
+    },
+    "header": {
+      "home": "Início",
+      "about": "Sobre",
+      "services": "Serviços",
+      "contact": "Contato"
+    }
+}
