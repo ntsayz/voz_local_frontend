@@ -24,12 +24,12 @@
         "education": "Educação",
         "culture": "Cultura",
         "energy": "Energia",
-        "select": "Selecione uma Categoria",
-        "sortOrder": {
-            "default": "Padrão",
-            "status": "Estado (Ativo/Encerrado)",
-            "category": "Categoria"
-        }
+        "select": "Selecione uma Categoria"
+    },
+    "sortOrder": {
+        "default": "Padrão",
+        "status": "Estado (Ativo/Encerrado)",
+        "category": "Categoria"
     },
     "statuses": {
         "active": "Ativo",
