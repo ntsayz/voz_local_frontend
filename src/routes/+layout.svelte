@@ -2,6 +2,7 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { fetchLocations } from '$lib/stores/locations';
+	import '$lib/i18n';
 
 	export const data = undefined; // Use `export const` for external references
 

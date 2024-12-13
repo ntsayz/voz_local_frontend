@@ -1,10 +1,14 @@
 <script>
+  import { t } from 'svelte-i18n';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import SurveyCard from '$lib/components/survey/Card.svelte';
   import { onMount } from 'svelte';
   import 'aos/dist/aos.css';
   import AOS from 'aos';
+  
+
+  
   
 
   const mockSurveys = [
@@ -48,6 +52,8 @@
 </script>
 
 <Header />
+
+
 
 <main class="min-h-screen flex items-center justify-center bg-gray-100 px-4 md:px-8">
   <div class="text-center max-w-4xl">
