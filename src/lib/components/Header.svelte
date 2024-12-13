@@ -23,6 +23,7 @@
   function toggleDropdown() {
     isDropdownOpen = !isDropdownOpen; // Toggle the dropdown state
   }
+  
 
   function logout() {
     auth.set({ token: null, user: null });
@@ -160,33 +161,55 @@
 
   <!-- Mobile Menu -->
   <div
-    class="sm:hidden"
     id="mobile-menu"
-    class:hidden={!isMobileMenuOpen} 
+    class={`fixed inset-0 z-40 bg-gray-800 bg-opacity-80 backdrop-blur-sm transform 
+      ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
+      transition-all duration-300 ease-in-out`}
   >
-    <div class="space-y-1 px-2 pb-3 pt-2">
-      <a
-        href="/"
-        class="block rounded-md px-3 py-2 text-base font-medium 
-        {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-      >Início</a>
-      {#if currentAuth.user?.role === 'admin'}
-      <a
-        href="/dashboard"
-        class="block rounded-md px-3 py-2 text-base font-medium 
-        {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-      >Painel</a>
-      {/if}
-      <a
-        href="/reports"
-        class="block rounded-md px-3 py-2 text-base font-medium 
-        {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-      >Avisos e Ocorrências</a>
-      <a
-        href="/surveys"
-        class="block rounded-md px-3 py-2 text-base font-medium 
-        {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-      >Sondagens</a>
+    <div class="absolute right-0 top-0 h-full w-3/4 bg-white shadow-lg p-4">
+      <!-- Close Button -->
+      <button
+        type="button"
+        class="text-gray-500 hover:text-gray-700 focus:outline-none"
+        on:click={toggleMobileMenu}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="h-6 w-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Navigation Links -->
+      <nav class="mt-4 space-y-2">
+        <a
+          href="/"
+          class="block rounded-md px-3 py-2 text-base font-medium 
+          {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
+        >Início</a>
+        {#if currentAuth.user?.role === 'admin'}
+        <a
+          href="/dashboard"
+          class="block rounded-md px-3 py-2 text-base font-medium 
+          {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
+        >Painel</a>
+        {/if}
+        <a
+          href="/reports"
+          class="block rounded-md px-3 py-2 text-base font-medium 
+          {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
+        >Avisos e Ocorrências</a>
+        <a
+          href="/surveys"
+          class="block rounded-md px-3 py-2 text-base font-medium 
+          {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
+        >Sondagens</a>
+      </nav>
     </div>
   </div>
 </nav>
