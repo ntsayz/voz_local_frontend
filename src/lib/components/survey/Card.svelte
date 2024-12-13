@@ -11,6 +11,7 @@
   // Reactive translations for category and status
   $: categoryTranslation = $t(`surveys.dropdowns.category.${survey.category}`);
   $: statusTranslation = $t(`surveys.dropdowns.statuses.${survey.status}`);
+
 </script>
 
 <div
@@ -145,4 +146,5 @@
       </div>
     {/if}
   </div>
+
 </div>
