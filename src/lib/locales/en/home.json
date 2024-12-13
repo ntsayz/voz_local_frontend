@@ -1,48 +1,26 @@
 {
-    "home": {
-      "welcome": "Bem-vindo à nossa plataforma!",
-      "intro": "Uma plataforma para conectar e informar a comunidade moçambicana. Aqui, a sua voz é importante. Participe em debates, faça ouvir as suas preocupações e ajude a moldar o futuro do nosso país.",
-      "features": {
-        "polls": {
-          "title": "Sondagens e Opiniões Públicas",
-          "description": "Dê a sua opinião em temas importantes que afetam a sua comunidade. As nossas sondagens ajudam a identificar o que mais importa para os moçambicanos."
-        },
-        "reports": {
-          "title": "Relate Problemas na Comunidade",
-          "description": "Ajude o governo e ONGs a concentrarem os seus esforços nas áreas que mais precisam, relatando problemas que afetam a sua comunidade, como infraestrutura, segurança e saúde."
-        }
-      },
-      "surveys": {
-        "title": "Faça ouvir a sua opinião",
-        "description": "Sua voz tem poder. Participe, vote e compartilhe sua visão. Ao ouvir diferentes perspectivas e unir forças, podemos transformar desafios em oportunidades e construir uma comunidade mais forte e conectada. Juntos, conduzimos as mudanças que desejamos ver."
-      },
-      "inclusion": {
-        "title": "Pensamos em todos",
-        "description": "Para nós, a inclusão é essencial. Trabalhamos para garantir que todas as comunidades, do Rovuma a Maputo, sintam-se representadas e ouvidas. No entanto, apesar dos nossos esforços, pode ser que não consigamos alcançar a todos. Se a sua comunidade estiver ausente, <a href=\"#\" class=\"text-primary-500\">avise-nos aqui</a>"
-      },
-      "cta": {
-        "button": "Junte-se a Nós Agora"
-      }
+  "welcome": "Bem-vindo à nossa plataforma!",
+  "intro": "Uma plataforma para conectar e informar a comunidade moçambicana. Aqui, a sua voz é importante. Participe em debates, faça ouvir as suas preocupações e ajude a moldar o futuro do nosso país.",
+  "features": {
+    "polls": {
+      "title": "Sondagens e Opiniões Públicas",
+      "description": "Dê a sua opinião em temas importantes que afetam a sua comunidade. As nossas sondagens ajudam a identificar o que mais importa para os moçambicanos."
     },
-    "common": {
-      "next": "Próximo",
-      "back": "Voltar",
-      "select": "Selecione",
-      "selectCategory": "Selecione uma Categoria",
-      "selectProvince": "Selecione uma Província",
-      "selectDistrict": "Selecione um Distrito",
-      "selectSubLocation": "Selecione uma Sub-Locação"
-    },
-    "footer": {
-      "contact": "Entre em contato conosco",
-      "terms": "Termos de Uso",
-      "privacy": "Política de Privacidade"
-    },
-    "header": {
-      "home": "Início",
-      "about": "Sobre",
-      "services": "Serviços",
-      "contact": "Contato"
+    "reports": {
+      "title": "Relate Problemas na Comunidade",
+      "description": "Ajude o governo e ONGs a concentrarem os seus esforços nas áreas que mais precisam, relatando problemas que afetam a sua comunidade, como infraestrutura, segurança e saúde."
     }
+  },
+  "surveys": {
+    "title": "Faça ouvir a sua opinião",
+    "description": "Sua voz tem poder. Participe, vote e compartilhe sua visão. Ao ouvir diferentes perspectivas e unir forças, podemos transformar desafios em oportunidades e construir uma comunidade mais forte e conectada. Juntos, conduzimos as mudanças que desejamos ver."
+  },
+  "inclusion": {
+    "title": "Pensamos em todos",
+    "description": "Para nós, a inclusão é essencial. Trabalhamos para garantir que todas as comunidades, do Rovuma a Maputo, sintam-se representadas e ouvidas. No entanto, apesar dos nossos esforços, pode ser que não consigamos alcançar a todos. Se a sua comunidade estiver ausente, <a href=\"#\" class=\"text-primary-500\">avise-nos aqui</a>"
+  },
+  "cta": {
+    "button": "Junte-se a Nós Agora"
   }
+}
   
