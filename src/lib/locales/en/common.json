@@ -6,6 +6,8 @@
   "profile": "Profile",
   "logout": "Logout",
   "login": "Login",
+  "changeLanguage" : "Change Language",
+  "openUserMenu" : "Open User Menu",
   "language": "Language",
   "languageSwitcher": {
     "en": "English",

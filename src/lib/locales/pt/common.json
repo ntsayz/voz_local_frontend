@@ -7,6 +7,8 @@
   "logout": "Sair",
   "login": "Entrar",
   "language": "Idioma",
+  "changeLanguage" : "Alterar Idioma",
+  "openUserMenu" : "Abrir menu do utilizador",
   "languageSwitcher": {
     "en": "Inglês",
     "pt": "Português"

@@ -68,7 +68,7 @@
           aria-expanded={isMobileMenuOpen}
           on:click={toggleMobileMenu}
         >
-          <span class="sr-only">Abrir menu principal</span>
+          <span class="sr-only">{$t('common.mobileMenu.openMenu')}</span>
           <svg
             class="h-6 w-6 {isMobileMenuOpen ? 'hidden' : 'block'}"
             fill="none"
@@ -114,18 +114,18 @@
             href="/dashboard"
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Painel</a>
+          >{$t('common.dashboard')}</a>
           {/if}
           <a
             href="/reports"
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Avisos e Ocorrências</a>
+          >{$t('common.reports')}</a>
           <a
             href="/surveys"
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Sondagens</a>
+          >{$t('common.surveys')}</a>
         </div>
       </div>
 
@@ -141,7 +141,7 @@
             aria-haspopup="true"
             on:click={toggleLocaleDropdown}
           >
-            <span class="sr-only">Alterar idioma</span>
+            <span class="sr-only">{$t('common.changeLanguage')}</span>
             <!-- Globe Icon -->
             <svg
               class="h-5 w-5"
@@ -188,7 +188,7 @@
               aria-haspopup="true"
               on:click={toggleDropdown}
             >
-              <span class="sr-only">Abrir menu do utilizador</span>
+              <span class="sr-only">{$t('common.openUserMenu')}</span>
               <img
                 class="h-8 w-8 rounded-full"
                 src="https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
@@ -208,7 +208,7 @@
                   class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   on:click={logout}
                 >
-                  Sair
+                {$t('common.logout')}
                 </button>
               </div>
             {/if}
@@ -219,7 +219,7 @@
             href="/login"
             class="rounded-md bg-primary-500 px-3 py-2 text-sm font-medium text-white hover:bg-primary-700"
           >
-            Entrar
+          {$t('common.login')}
           </a>
         {/if}
       </div>
@@ -259,29 +259,29 @@
           href="/"
           class="block rounded-md px-3 py-2 text-base font-medium 
           {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >Início</a>
+        >{$t('common.home')}</a>
         {#if currentAuth.user?.role === 'admin'}
         <a
           href="/dashboard"
           class="block rounded-md px-3 py-2 text-base font-medium 
           {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >Painel</a>
+        >{$t('common.dashboard')}</a>
         {/if}
         <a
           href="/reports"
           class="block rounded-md px-3 py-2 text-base font-medium 
           {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >Avisos e Ocorrências</a>
+        >{$t('common.reports')}</a>
         <a
           href="/surveys"
           class="block rounded-md px-3 py-2 text-base font-medium 
           {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >Sondagens</a>
+        >{$t('common.surveys')}</a>
       </nav>
 
       <!-- Language Switcher on Mobile -->
       <div class="mt-4">
-        <h2 class="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-2">Idioma</h2>
+        <h2 class="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-2">{$t('common.language')}</h2>
         {#each languages as lang}
           <button
             class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
