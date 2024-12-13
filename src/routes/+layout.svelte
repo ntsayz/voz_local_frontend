@@ -1,8 +1,10 @@
 <script lang="ts">
+	import '../i18n'; // Ensure this is the FIRST import
+  	import { t } from 'svelte-i18n';
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { fetchLocations } from '$lib/stores/locations';
-	import '$lib/i18n';
+	
 
 	export const data = undefined; // Use `export const` for external references
 

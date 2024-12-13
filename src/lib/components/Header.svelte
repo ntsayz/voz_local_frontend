@@ -1,29 +1,41 @@
 <script lang="ts">
   import { auth, type AuthState } from '$lib/stores/auth';
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores'; // Import the $page store
+  import { page } from '$app/stores';
+  import { t,locale } from 'svelte-i18n';
   
+
   let currentAuth: AuthState;
-  let currentPath: string; // Holds the current path from the $page store
-  let isMobileMenuOpen = false; // State for mobile menu visibility
-  let isDropdownOpen = false; // State to toggle dropdown visibility
+  let currentPath: string;
+  let isMobileMenuOpen = false;
+  let isDropdownOpen = false;
+  let isLocaleDropdownOpen = false;
+
+  // Available languages
+  const languages = [
+    { code: 'en', label: 'English', icon: '🇬🇧' },
+    { code: 'pt', label: 'Português', icon: '🇵🇹' }
+  ];
 
   const unsubscribeAuth = auth.subscribe((value) => {
     currentAuth = value;
   });
 
   const unsubscribePage = page.subscribe(($page) => {
-    currentPath = $page.url.pathname; // Get the current path
+    currentPath = $page.url.pathname;
   });
 
   function toggleMobileMenu() {
-    isMobileMenuOpen = !isMobileMenuOpen; // Toggle the menu state
+    isMobileMenuOpen = !isMobileMenuOpen;
   }
 
   function toggleDropdown() {
-    isDropdownOpen = !isDropdownOpen; // Toggle the dropdown state
+    isDropdownOpen = !isDropdownOpen;
   }
-  
+
+  function toggleLocaleDropdown() {
+    isLocaleDropdownOpen = !isLocaleDropdownOpen;
+  }
 
   function logout() {
     auth.set({ token: null, user: null });
@@ -31,6 +43,13 @@
     localStorage.removeItem('auth');
     goto('/login');
   }
+
+  // Automatically unsubscribe on component destroy (optional best practice)
+  import { onDestroy } from 'svelte';
+  onDestroy(() => {
+    unsubscribeAuth();
+    unsubscribePage();
+  });
 </script>
 
 <nav class="bg-gray-800 shadow-md">
@@ -78,7 +97,7 @@
         </div>
       </div>
 
-      <!-- Navigation Links -->
+      <!-- Desktop Navigation Links -->
       <div class="hidden sm:ml-6 sm:block">
         <div class="flex space-x-4">
           <a
@@ -106,9 +125,54 @@
         </div>
       </div>
 
-      <!-- Profile / Auth Section -->
-      <!-- Profile / Auth Section -->
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+      <!-- Profile and Locale Section -->
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 space-x-4">
+        
+        <!-- Language Dropdown -->
+        <div class="relative">
+          <button
+            type="button"
+            class="flex items-center rounded-full p-2 text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            aria-expanded={isLocaleDropdownOpen}
+            aria-haspopup="true"
+            on:click={toggleLocaleDropdown}
+          >
+            <span class="sr-only">Alterar idioma</span>
+            <!-- Globe Icon -->
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.556 0 8.25-3.694 8.25-8.25S16.556 3.75 12 3.75 3.75 7.444 3.75 12s3.694 8.25 8.25 8.25z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12h19.5M12 2.25v19.5" />
+            </svg>
+          </button>
+          {#if isLocaleDropdownOpen}
+            <div
+              class="absolute right-0 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20"
+              role="menu"
+              aria-orientation="vertical"
+              tabindex="-1"
+            >
+              {#each languages as lang}
+                <button
+                  class="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem"
+                  tabindex="-1"
+                  on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
+                >
+                  <span class="mr-2">{lang.icon}</span>
+                  {lang.label}
+                </button>
+              {/each}
+            </div>
+          {/if}
+        </div>
+        
         {#if currentAuth.user}
           <!-- Logged-in User Dropdown -->
           <div class="relative ml-3">
@@ -210,6 +274,20 @@
           {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
         >Sondagens</a>
       </nav>
+
+      <!-- Language Switcher on Mobile -->
+      <div class="mt-4">
+        <h2 class="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-2">Idioma</h2>
+        {#each languages as lang}
+          <button
+            class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+            on:click={() => { locale.set(lang.code); toggleMobileMenu(); }}
+          >
+            <span class="mr-2">{lang.icon}</span>
+            {lang.label}
+          </button>
+        {/each}
+      </div>
     </div>
   </div>
 </nav>

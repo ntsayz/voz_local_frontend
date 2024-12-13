@@ -55,6 +55,7 @@
 
 
 
+
 <main class="min-h-screen flex items-center justify-center bg-gray-100 px-4 md:px-8">
   <div class="text-center max-w-4xl">
     <!-- Main Heading -->
@@ -62,7 +63,7 @@
       class="text-4xl font-extrabold mb-6 text-primary-500 leading-tight"
       data-aos="fade-up"
     >
-      Bem-vindo a <span class="text-primary-500">Voz Local</span>
+    {$t('welcome')}
     </h1>
     
     <!-- Subheading -->
