@@ -1,32 +1,30 @@
 {
-    "title": "Pesquisas Populares",
-    "searchPlaceholder": "Pesquisar...",
-    "categoryLabel": "Categoria",
-    "sortOrderLabel": "Ordenar por",
-    "defaultSort": "Padrão",
-    "statusSort": "Estado (Ativo/Encerrado)",
-    "categorySort": "Categoria",
-    "noResults": "Nenhuma pesquisa encontrada.",
-    "filters": {
-      "category": "Categoria",
-      "sortOrder": "Ordenar por"
+  "title": "Popular Surveys",
+  "searchPlaceholder": "Search...",
+  "categoryLabel": "Category",
+  "sortOrderLabel": "Sort by",
+  "defaultSort": "Default",
+  "statusSort": "Status (Active/Closed)",
+  "categorySort": "Category",
+  "noResults": "No surveys found.",
+  "filters": {
+    "category": "Category",
+    "sortOrder": "Sort by"
+  },
+  "dropdowns": {
+    "category": {
+      "all": "All",
+      "select": "Select a Category"
     },
-    "dropdowns": {
-      "category": {
-        "all": "Todos",
-        "select": "Selecione uma Categoria"
-      },
-      "sortOrder": {
-        "default": "Padrão",
-        "status": "Estado (Ativo/Encerrado)",
-        "category": "Categoria"
-      }
-    },
-    "surveyCard": {
-      "status": "Status",
-      "category": "Categoria",
-      "totalVotes": "Total de Votos"
+    "sortOrder": {
+      "default": "Default",
+      "status": "Status (Active/Closed)",
+      "category": "Category"
     }
-  
+  },
+  "surveyCard": {
+    "status": "Status",
+    "category": "Category",
+    "totalVotes": "Total Votes"
+  }
 }
-  
