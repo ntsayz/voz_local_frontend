@@ -18,7 +18,8 @@
     },
     "inclusion": {
     "title": "Pensamos em todos",
-    "description": "Para nós, a inclusão é essencial. Trabalhamos para garantir que todas as comunidades, do Rovuma a Maputo, sintam-se representadas e ouvidas. No entanto, apesar dos nossos esforços, pode ser que não consigamos alcançar a todos. Se a sua comunidade estiver ausente, <a href=\"#\" class=\"text-primary-500\">avise-nos aqui</a>"
+    "description": "Para nós, a inclusão é essencial. Trabalhamos para garantir que todas as comunidades, do Rovuma a Maputo, sintam-se representadas e ouvidas. No entanto, apesar dos nossos esforços, pode ser que não consigamos alcançar a todos. Se a sua comunidade estiver ausente, {link}",
+    "location_sugestion_text" : "avise-nos aqui"
     },
     "cta": {
     "button": "Junte-se a Nós Agora"

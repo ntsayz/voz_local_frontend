@@ -17,7 +17,8 @@
   },
   "inclusion": {
     "title": "We Think of Everyone",
-    "description": "For us, inclusion is essential. We work to ensure that all communities, from Rovuma to Maputo, feel represented and heard. However, despite our efforts, we may not be able to reach everyone. If your community is missing, <a href=\"#\" class=\"text-primary-500\">let us know here</a>"
+    "description": "For us, inclusion is essential. We work to ensure that all communities, from Rovuma to Maputo, feel represented and heard. However, despite our efforts, we may not be able to reach everyone. If your community is missing, {link}.",
+    "location_sugestion_text" : "let us know here"
   },
   "cta": {
     "button": "Join Us Now"

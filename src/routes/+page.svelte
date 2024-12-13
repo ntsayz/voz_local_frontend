@@ -72,8 +72,7 @@
       data-aos="fade-up"
       data-aos-delay="200"
     >
-      Uma plataforma para conectar e informar a comunidade moçambicana. Aqui, a sua voz é importante. Participe em 
-      debates, faça ouvir as suas preocupações e ajude a moldar o futuro do nosso país.
+    {$t('home.intro')} 
     </p>
 
     <!-- Features -->
@@ -95,11 +94,10 @@
           data-aos="fade-up"
           data-aos-delay="600"
         >
-          Sondagens e Opiniões Públicas
+        {$t('home.features.polls.title')}
         </h2>
         <p class="text-gray-600" data-aos="fade-up" data-aos-delay="800">
-          Dê a sua opinião em temas importantes que afetam a sua comunidade. As nossas sondagens ajudam a
-          identificar o que mais importa para os moçambicanos.
+          {$t('home.features.polls.description')}
         </p>
       </div>
 
@@ -116,11 +114,10 @@
           data-aos="fade-up"
           data-aos-delay="600"
         >
-          Relate Problemas na Comunidade
+        {$t('home.features.reports.title')}
         </h2>
         <p class="text-gray-600" data-aos="fade-up" data-aos-delay="800">
-          Ajude o governo e ONGs a concentrarem os seus esforços nas áreas que mais precisam, relatando 
-          problemas que afetam a sua comunidade, como infraestrutura, segurança e saúde.
+          {$t('home.features.reports.description')}
         </p>
       </div>
     </div>
@@ -133,10 +130,10 @@
       data-aos="fade-up"
       data-aos-delay="400"
     >
-      Faça ouvir a sua opinião
+    {$t('home.surveys.title')}
     </h3>
     <p class="text-gray-600 pt-6" data-aos="fade-up" data-aos-delay="800">
-      Sua voz tem poder. Participe, vote e compartilhe sua visão. Ao ouvir diferentes perspectivas e unir forças, podemos transformar desafios em oportunidades e construir uma comunidade mais forte e conectada. Juntos, conduzimos as mudanças que desejamos ver.
+      {$t('home.surveys.description')}
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
@@ -160,12 +157,15 @@
       data-aos="fade-up"
       data-aos-delay="400"
     >
-      Pensamos em todos
+    {$t('home.inclusion.title')}
     </h3>
 
     <p class="text-gray-600 pt-6" data-aos="fade-up" data-aos-delay="800">
-      Para nós, a inclusão é essencial. Trabalhamos para garantir que todas as comunidades, do Rovuma a Maputo, sintam-se representadas e ouvidas.
-      No entanto, apesar dos nossos esforços, pode ser que não consigamos alcançar a todos. Se a sua comunidade estiver ausente, <a href="#" class="text-primary-500 ">avise-nos aqui</a>
+      {@html $t('home.inclusion.description', {
+        values: {
+          link: `<a href="#" class="text-primary-500">${$t('home.inclusion.location_sugestion_text')}</a>`
+        }
+      })}
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
@@ -204,7 +204,7 @@
       data-aos="zoom-in"
     >
       <button class="bg-primary-500 text-white font-semibold px-6 py-3 rounded-md shadow-md hover:bg-primary-600 transition">
-        Junte-se a Nós Agora
+        {$t('home.cta.button')}
       </button>
     </div>
   </div>
