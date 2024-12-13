@@ -1,6 +1,40 @@
 <script>
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import SurveyCard from '$lib/components/survey/Card.svelte';
+
+  const mockSurveys = [
+    {
+      id: '1',
+      title: 'Preferências de Transporte',
+      description: 'Indique o meio de transporte que mais usa no seu dia a dia.',
+      type: 'single_choice',
+      status: 'Ativo',
+      category: 'Transporte',
+      results: [
+        { label: 'Transporte público (Chapa, autocarro, etc.)', votes: 60 },
+        { label: 'Veículo pessoal', votes: 25 },
+        { label: 'Transporte privado (Táxi, Yango, etc.)', votes: 25 },
+        { label: 'A pé', votes: 20 },
+      ],
+      totalVotes: 130,
+    },
+    {
+        id: '10',
+        title: 'Qual tecnologia digital traria mais benefícios para o teu dia-a-dia?',
+        description: 'Explorar a perceção da população sobre avanços tecnológicos no trabalho, estudo ou serviços públicos.',
+        type: 'multiple_choice',
+        status: 'Ativo',
+        category: 'Tecnologia',
+        results: [
+          { label: 'Internet acessível e rápida', votes: 70 },
+          { label: 'Plataformas de ensino à distância', votes: 50 },
+          { label: 'Digitalização de serviços públicos (licenças, registos)', votes: 40 },
+          { label: 'Aplicações móveis para transporte e mapas', votes: 30 },
+        ],
+        totalVotes: 190,
+      },
+  ];
 </script>
 
 <Header />
@@ -52,6 +86,22 @@
         </p>
       </div>
     </div>
+
+    <h3 class="text-2xl font-extrabold mb-6 text-primary-500 ">
+      Faça ouvir a sua opinião
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+
+      {#each mockSurveys as survey (survey.id)}
+      <div
+        class="group relative p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-500 transition"
+      >
+        <SurveyCard {survey} />
+      </div>
+      {/each}
+    </div>
+
 
     <!-- Call to Action -->
     <div class="mt-12">
