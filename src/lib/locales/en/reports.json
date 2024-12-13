@@ -1,0 +1,17 @@
+{
+    "map": {
+      "noData": "Sem dados",
+      "clickToSeeDetails": "Clique numa província para ver os detalhes",
+      "provinceDetails": {
+        "title": "Detalhes da Província",
+        "occurrences": "Número de ocorrências",
+        "reportList": "Lista de Relatórios"
+      }
+    },
+    "common": {
+      "close": "Fechar",
+      "back": "Voltar",
+      "selectProvince": "Selecione uma Província"
+    }
+  }
+  

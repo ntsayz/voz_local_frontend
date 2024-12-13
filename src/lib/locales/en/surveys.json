@@ -1,0 +1,49 @@
+{
+    "surveyPage": {
+      "title": "Pesquisas Populares",
+      "searchPlaceholder": "Pesquisar...",
+      "categoryLabel": "Categoria",
+      "sortOrderLabel": "Ordenar por",
+      "defaultSort": "Padrão",
+      "statusSort": "Estado (Ativo/Encerrado)",
+      "categorySort": "Categoria",
+      "noResults": "Nenhuma pesquisa encontrada.",
+      "filters": {
+        "category": "Categoria",
+        "sortOrder": "Ordenar por"
+      },
+      "dropdowns": {
+        "category": {
+          "all": "Todos",
+          "select": "Selecione uma Categoria"
+        },
+        "sortOrder": {
+          "default": "Padrão",
+          "status": "Estado (Ativo/Encerrado)",
+          "category": "Categoria"
+        }
+      },
+      "surveyCard": {
+        "status": "Status",
+        "category": "Categoria",
+        "totalVotes": "Total de Votos"
+      }
+    },
+    "common": {
+      "close": "Fechar",
+      "back": "Voltar",
+      "selectProvince": "Selecione uma Província"
+    },
+    "footer": {
+      "contact": "Entre em contato conosco",
+      "terms": "Termos de Uso",
+      "privacy": "Política de Privacidade"
+    },
+    "header": {
+      "home": "Início",
+      "about": "Sobre",
+      "services": "Serviços",
+      "contact": "Contato"
+    }
+  }
+  

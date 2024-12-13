@@ -1,13 +1,35 @@
 {
-    "auth": {
-      "login": {
-        "title": "Login to your account",
-        "button": "Login"
-      },
-      "register": {
-        "title": "Create a new account",
-        "button": "Sign Up"
-      }
-    }
+    "home": "Início",
+    "dashboard": "Painel",
+    "reports": "Avisos e Ocorrências",
+    "surveys": "Sondagens",
+    "profile": "Perfil",
+    "logout": "Sair",
+    "login": "Entrar",
+    "language": "Idioma",
+    "languageSwitcher": {
+      "en": "Inglês",
+      "pt": "Português"
+    },
+    "scrollingMessage": "Este website está em desenvolvimento e não representa a versão final.",
+    "footer": {
+      "aboutUs": "Sobre Nós",
+      "privacyPolicy": "Política de Privacidade",
+      "contact": "Contacto",
+      "madeWithLove": "Feito com ❤️ para Moçambique"
+    },
+    "mobileMenu": {
+      "openMenu": "Abrir menu principal",
+      "closeMenu": "Fechar menu principal"
+    },
+    "logoutConfirmation": "Você tem certeza de que deseja sair?",
+  "footer": {
+    "branding": "Voz Local",
+    "year": "{year}"
+  },
+  "header": {
+    "logout": "Sair",
+    "profile": "Perfil",
+    "dashboard": "Painel"
   }
-  
+}

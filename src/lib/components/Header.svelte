@@ -1,8 +1,12 @@
 <script lang="ts">
   import { auth, type AuthState } from '$lib/stores/auth';
+  import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import { t,locale } from 'svelte-i18n';
+
+
+  let isLoaded = false;
   
 
   let currentAuth: AuthState;
@@ -104,7 +108,7 @@
             href="/"
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Início</a>
+          > {$t('common.home')}</a>
           {#if currentAuth.user?.role === 'admin'}
           <a
             href="/dashboard"
