@@ -1,4 +1,5 @@
 <script>
+  import { t } from 'svelte-i18n';
   let year = new Date().getFullYear();
 </script>
 
@@ -30,7 +31,7 @@
   <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex justify-center relative overflow-hidden">
       <p class="text-sm font-medium animate-marquee">
-        Este website está em desenvolvimento e não representa a versão final.
+        {$t('common.scrollingMessage')}
       </p>
     </div>
   </div>
@@ -47,14 +48,14 @@
 
       <!-- Footer Navigation -->
       <nav class="flex flex-wrap justify-center md:justify-start space-x-4">
-        <a href="/sobre" class="text-gray-300 hover:text-primary-400 text-sm">Sobre Nós</a>
-        <a href="/privacidade" class="text-gray-300 hover:text-primary-400 text-sm">Política de Privacidade</a>
-        <a href="/contacto" class="text-gray-300 hover:text-primary-400 text-sm">Contacto</a>
+        <a href="/sobre" class="text-gray-300 hover:text-primary-400 text-sm"> {$t('common.footer.aboutUs')}</a>
+        <a href="/privacidade" class="text-gray-300 hover:text-primary-400 text-sm">{$t('common.footer.privacyPolicy')}</a>
+        <a href="/contacto" class="text-gray-300 hover:text-primary-400 text-sm">{$t('common.footer.contact')}</a>
       </nav>
     </div>
 
     <div class="mt-4 text-center text-gray-400 text-xs">
-      Feito com ❤️ para Moçambique
+      {$t('common.footer.madeWithLove')}
     </div>
   </div>
 </footer>
