@@ -30,7 +30,12 @@
             "status": "Estado (Ativo/Encerrado)",
             "category": "Categoria"
         }
-    }
+    },
+    "statuses": {
+        "active": "Ativo",
+        "closed": "Encerrado"
+      },
+      "noResults": "Nenhuma pesquisa encontrada."
     },
     "surveyCard": {
     "status": "Status",
