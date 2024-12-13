@@ -53,9 +53,10 @@
         <a href="/contacto" class="text-gray-300 hover:text-primary-400 text-sm">{$t('common.footer.contact')}</a>
       </nav>
     </div>
-
+<!---
     <div class="mt-4 text-center text-gray-400 text-xs">
       {$t('common.footer.madeWithLove')}
     </div>
+-->
   </div>
 </footer>
