@@ -1,35 +1,32 @@
 {
-    "home": "Início",
-    "dashboard": "Painel",
-    "reports": "Avisos e Ocorrências",
-    "surveys": "Sondagens",
-    "profile": "Perfil",
-    "logout": "Sair",
-    "login": "Entrar",
-    "language": "Idioma",
-    "languageSwitcher": {
-      "en": "Inglês",
-      "pt": "Português"
-    },
-    "scrollingMessage": "Este website está em desenvolvimento e não representa a versão final.",
-    "footer": {
-      "aboutUs": "Sobre Nós",
-      "privacyPolicy": "Política de Privacidade",
-      "contact": "Contacto",
-      "madeWithLove": "Feito com ❤️ para Moçambique"
-    },
-    "mobileMenu": {
-      "openMenu": "Abrir menu principal",
-      "closeMenu": "Fechar menu principal"
-    },
-    "logoutConfirmation": "Você tem certeza de que deseja sair?",
-  "footer": {
-    "branding": "Voz Local",
-    "year": "{year}"
+  "home": "Home",
+  "dashboard": "Dashboard",
+  "reports": "Reports and Occurrences",
+  "surveys": "Surveys",
+  "profile": "Profile",
+  "logout": "Logout",
+  "login": "Login",
+  "language": "Language",
+  "languageSwitcher": {
+    "en": "English",
+    "pt": "Portuguese"
   },
+  "scrollingMessage": "This website is under development and does not represent the final version.",
+  "footer": {
+    "aboutUs": "About Us",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact",
+    "madeWithLove": "Made with ❤️ for Mozambique"
+  },
+  "mobileMenu": {
+    "openMenu": "Open main menu",
+    "closeMenu": "Close main menu"
+  },
+  "logoutConfirmation": "Are you sure you want to logout?",
+  
   "header": {
-    "logout": "Sair",
-    "profile": "Perfil",
-    "dashboard": "Painel"
+    "logout": "Logout",
+    "profile": "Profile",
+    "dashboard": "Dashboard"
   }
 }

@@ -22,26 +22,6 @@
     },
     "cta": {
     "button": "Junte-se a Nós Agora"
-    },
-    "common": {
-      "next": "Próximo",
-      "back": "Voltar",
-      "select": "Selecione",
-      "selectCategory": "Selecione uma Categoria",
-      "selectProvince": "Selecione uma Província",
-      "selectDistrict": "Selecione um Distrito",
-      "selectSubLocation": "Selecione uma Sub-Locação"
-    },
-    "footer": {
-      "contact": "Entre em contato conosco",
-      "terms": "Termos de Uso",
-      "privacy": "Política de Privacidade"
-    },
-    "header": {
-      "home": "Início",
-      "about": "Sobre",
-      "services": "Serviços",
-      "contact": "Contato"
     }
   }
   
