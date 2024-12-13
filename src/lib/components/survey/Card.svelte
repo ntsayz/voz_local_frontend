@@ -42,7 +42,7 @@
       {#each survey.results as option}
         <div class="flex items-center justify-between">
           <span>{option.label}</span>
-          <span class="text-sm text-gray-500">{option.votes} votos {$t('surveys.dropdowns.category.all')}</span>
+          <span class="text-sm text-gray-500">{option.votes} votos</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-2.5">
           <div
