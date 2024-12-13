@@ -122,7 +122,7 @@
 
     <!-- Surveys Section -->
     <h3 
-      class="text-2xl text-left font-extrabold mb-6 text-primary-500 pt-12"
+      class="text-2xl font-extrabold mb-6 text-primary-500 pt-12"
       data-aos="fade-up"
       data-aos-delay="400"
     >
@@ -135,7 +135,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
       {#each mockSurveys as survey (survey.id)}
         <div 
-          class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-500 transition"
+          class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-500 transition flex items-center justify-center"
           data-aos="fade-up"
         >
           <SurveyCard {survey} />
@@ -149,18 +149,47 @@
 
   <div class="pt-12">
     <h3 
-      class="text-2xl text-left font-extrabold mb-6 text-primary-500"
+      class="text-2xl font-extrabold mb-6 text-primary-500"
       data-aos="fade-up"
       data-aos-delay="400"
     >
-      Pensamos em todos!
+      Pensamos em todos
     </h3>
-      <img
-          src="demo/locations1.png"
-          alt="Mozambique Issue Reports"
-          class="w-128 h-64 mb-4 text-primary-300"
-          data-aos="zoom-in"
-        />
+
+    <p class="text-gray-600 pt-6" data-aos="fade-up" data-aos-delay="800">
+      Para nós, a inclusão é essencial. Trabalhamos para garantir que todas as comunidades, do Rovuma a Maputo, sintam-se representadas e ouvidas.
+      No entanto, apesar dos nossos esforços, pode ser que não consigamos alcançar a todos. Se a sua comunidade estiver ausente, <a href="#" class="text-primary-500 ">avise-nos aqui</a>
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+        <div 
+          class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-500 transition flex items-center justify-center"
+          data-aos="fade-up"
+        >
+
+          <img
+              src="demo/location3.png"
+              alt="List of communities"
+              class="w-128 h-64 mb-4 text-primary-300 rounded-lg"
+              data-aos="zoom-in"
+            />
+      </div>
+      <div 
+        class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-500 transition flex items-center justify-center"
+        data-aos="fade-up"
+      >
+
+        <img
+            src="demo/location4.png"
+            alt="List of communities"
+            class="w-128 h-64 mb-4 text-primary-300 rounded-lg"
+            data-aos="zoom-in"
+          />
+    </div>
+
+    </div>
+
+      
   </div>
     <!-- Call to Action -->
     <div 
