@@ -2,6 +2,11 @@
   import { t } from 'svelte-i18n';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import MainHeading from '$lib/components/home/MainHeading.svelte';
+  import FeaturesSection from '$lib/components/home/FeaturesSection.svelte';
+  import SurveysSection from '$lib/components/home/SurveysSection.svelte';
+  import InclusionSection from '$lib/components/home/InclusionSection.svelte';
+  import CTASection from '$lib/components/home/CTASection.svelte';
   import SurveyCard from '$lib/components/survey/Card.svelte';
   import { onMount } from 'svelte';
   import 'aos/dist/aos.css';
@@ -9,8 +14,6 @@
   import AOS from 'aos';
   
 
-  
-  
 
   const mockSurveys = [
     {
@@ -54,196 +57,15 @@
 </script>
 
 <Header />
-
-
-
-
 <main class="min-h-screen flex items-center justify-center bg-gray-100 px-4 md:px-8">
   <div class="text-center max-w-4xl">
-    <!-- Main Heading -->
-    <h1 
-      class="text-4xl font-extrabold mb-6 text-primary-500 leading-tight"
-      data-aos="fade-up"
-    >
-    {$t('home.welcome')}
-    </h1>
-    
-    <!-- Subheading -->
-    <p 
-      class="text-lg text-gray-700 font-medium leading-relaxed mb-8"
-      data-aos="fade-up"
-      data-aos-delay="200"
-    >
-    {$t('home.intro')} 
-    </p>
-
-    <!-- Features -->
-    <div 
-      class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left"
-      data-aos="fade-up"
-      data-aos-delay="400"
-    >
-      <!-- Polls Section -->
-      <div 
-          class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-500 transition flex items-center justify-center hover:animate-pulse-shadow"
-          data-aos="fade-up"
-        >
-        <div class="flex flex-col items-center md:items-start">
-          <img
-            src="graphics/data_trends.svg"
-            alt="Mozambique Community Polls"
-            class="w-128 h-64 mb-4"
-            data-aos="zoom-in"
-          />
-          <h2 
-            class="text-xl font-bold text-brand_grey-800 mb-2"
-            data-aos="fade-up"
-            data-aos-delay="600"
-          >
-          {$t('home.features.polls.title')}
-          </h2>
-          <p class="text-gray-600" data-aos="fade-in" data-aos-delay="1000">
-            {$t('home.features.polls.description')}
-          </p>
-        </div>
-      </div>
-
-      <!-- Reports Section -->
-
-      <div 
-          class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
-          data-aos="fade-up"
-        >
-
-        <div class="flex flex-col items-center md:items-start">
-          <img
-            src="graphics/people.svg"
-            alt="Mozambique Issue Reports"
-            class="w-128 h-64 mb-4 text-primary-300"
-            data-aos="zoom-in"
-          />
-          <h2 
-            class="text-xl font-bold text-brand_grey-800 mb-2"
-            data-aos="fade-up"
-            data-aos-delay="600"
-          >
-          {$t('home.features.reports.title')}
-          </h2>
-          <p class="text-gray-600" data-aos="fade-in" data-aos-delay="1000">
-            {$t('home.features.reports.description')}
-          </p>
-        </div>
-      </div>
-
-
-
-    </div>
-
-    
-  <div
-  >
-
-    <!-- Surveys Section -->
-    <h3 
-      class="text-2xl font-extrabold mb-6 text-primary-500 pt-12"
-      data-aos="fade-up"
-      data-aos-delay="400"
-    >
-    {$t('home.surveys.title')}
-    </h3>
-    <p class="text-gray-600 pt-6" data-aos="fade-up" data-aos-delay="800">
-      {$t('home.surveys.description')}
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-      {#each mockSurveys as survey (survey.id)}
-        <div 
-          class="group relative p-3 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
-          data-aos="fade-up"
-        >
-          <SurveyCard {survey} />
-        </div>
-      {/each}
-    </div>
-    
-
-  </div>
-
-  <div class="pt-12">
-    <h3 
-      class="text-2xl font-extrabold mb-6 text-primary-500"
-      data-aos="fade-up"
-      data-aos-delay="400"
-    >
-    {$t('home.inclusion.title')}
-    </h3>
-
-    <p class="text-gray-600 pt-6" data-aos="fade-up" data-aos-delay="800">
-      {@html $t('home.inclusion.description', {
-        values: {
-          link: `<a href="#" class="text-primary-500">${$t('home.inclusion.location_sugestion_text')}</a>`
-        }
-      })}
-    </p>
-    
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-        <div 
-            class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
-            data-aos="fade-up"
-        >
-            <div 
-              class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center"
-              data-aos="fade-up"
-            >
-
-              <img
-                  src="demo/location3.png"
-                  alt="List of communities"
-                  class="w-128 h-64 mb-4 text-primary-300 rounded-lg"
-                  data-aos="zoom-in"
-                />
-            
-            </div>
-        
-        </div>
-
-        <div 
-            class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
-            data-aos="fade-up"
-        >
-            <div 
-              class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center"
-              data-aos="fade-up"
-            >
-
-              <img
-                  src="demo/location4.png"
-                  alt="List of communities"
-                  class="w-128 h-64 mb-4 text-primary-300 rounded-lg"
-                  data-aos="zoom-in"
-                />
-            
-            </div>
-        
-        </div>
-
-    </div>
-
-      
-  </div>
-    <!-- Call to Action -->
-    <div 
-      class="mt-12"
-      data-aos="zoom-in"
-    >
-      <button class="bg-primary-500 text-white font-semibold px-6 py-3 rounded-md shadow-md hover:bg-primary-600 transition">
-        {$t('home.cta.button')}
-      </button>
-    </div>
+    <MainHeading />
+    <FeaturesSection />
+    <SurveysSection {mockSurveys} />
+    <InclusionSection />
+    <CTASection />
   </div>
 </main>
-
 <Footer />
 
 
