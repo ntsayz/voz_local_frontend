@@ -2,6 +2,11 @@
     "map": {
       "noData": "Sem dados",
       "clickToSeeDetails": "Clique numa província para ver os detalhes",
+      "legend": {
+        "title": "Legend",
+        "moreOccurrences": "Mais",
+        "lessOccurrences": "Menos"
+      },
       "provinceDetails": {
         "title": "Detalhes da Província",
         "occurrences": "Número de ocorrências",
