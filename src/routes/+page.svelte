@@ -188,35 +188,45 @@
     
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-      <div 
-          class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
-          data-aos="fade-up"
-        >
         <div 
-          class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center"
-          data-aos="fade-up"
+            class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
+            data-aos="fade-up"
         >
+            <div 
+              class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center"
+              data-aos="fade-up"
+            >
 
-          <img
-              src="demo/location3.png"
-              alt="List of communities"
-              class="w-128 h-64 mb-4 text-primary-300 rounded-lg"
-              data-aos="zoom-in"
-            />
-      </div>
-      </div>
-      <div 
-        class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-500 transition flex items-center justify-center"
-        data-aos="fade-up"
-      >
+              <img
+                  src="demo/location3.png"
+                  alt="List of communities"
+                  class="w-128 h-64 mb-4 text-primary-300 rounded-lg"
+                  data-aos="zoom-in"
+                />
+            
+            </div>
+        
+        </div>
 
-        <img
-            src="demo/location4.png"
-            alt="List of communities"
-            class="w-128 h-64 mb-4 text-primary-300 rounded-lg"
-            data-aos="zoom-in"
-          />
-    </div>
+        <div 
+            class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
+            data-aos="fade-up"
+        >
+            <div 
+              class="group relative p-3 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center"
+              data-aos="fade-up"
+            >
+
+              <img
+                  src="demo/location4.png"
+                  alt="List of communities"
+                  class="w-128 h-64 mb-4 text-primary-300 rounded-lg"
+                  data-aos="zoom-in"
+                />
+            
+            </div>
+        
+        </div>
 
     </div>
 
