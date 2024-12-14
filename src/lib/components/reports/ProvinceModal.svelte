@@ -58,13 +58,13 @@
   
     /* Modal Container */
     .modal {
-      background: white;
+        background: rgba(255, 255, 255, 0.9);
       border-radius: 8px;
       padding: 16px;
       max-width: 500px;
       width: 100%;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      animation: modal-in 0.4s cubic-bezier(0.25, 0.8, 0.5, 1) forwards; /* New animation */
+      animation: modal-in 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
       opacity: 0; /* Start hidden */
       transform: scale(0.9); /* Start smaller */
     }
