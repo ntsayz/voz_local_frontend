@@ -4,6 +4,7 @@
   import SurveyCardBody from '$lib/components/survey/pollComponents/CardBody.svelte';
   import SurveyRanking from '$lib/components/survey/pollComponents/Ranking.svelte';
   import SurveyMatrix from '$lib/components/survey/pollComponents/Matrix.svelte';
+  import { goto } from '$app/navigation';
 
   export let survey;
 
@@ -12,7 +13,7 @@
   const handleClick = () => {
     clicked = true;
     setTimeout(() => (clicked = false), 200);
-    // goto(`/surveys/${survey.id}`);
+    goto(`/surveys/34`);
   };
 </script>
 

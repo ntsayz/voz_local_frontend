@@ -5,6 +5,7 @@
     import { t } from 'svelte-i18n';
 	import Header from '$lib/components/Header.svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import LoadingScreen from '$lib/components/common/LoadingScreen.svelte';
   
     export let data; // Preloaded survey data (optional with load function)
     let survey;
@@ -32,7 +33,7 @@
       <p class="text-gray-600">{survey.description}</p>
       <!-- Add survey details or custom content -->
     {:else}
-      <p>Loading...</p>
+      <LoadingScreen/>
     {/if}
   </div>
 
