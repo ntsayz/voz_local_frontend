@@ -1,6 +1,6 @@
 <script>
     import { t } from 'svelte-i18n';
-    import SurveyCard from '$lib/components/survey/Card.svelte';
+    import SurveyCard from '$lib/components/survey/SurveyCard.svelte';
   
     export let mockSurveys = [];
   </script>
