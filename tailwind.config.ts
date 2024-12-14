@@ -36,7 +36,7 @@ export default {
             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)', // Default shadow
           },
           '50%': {
-            boxShadow: '0 6px 8px -2px rgba(14, 30, 46, 0.3), 0 4px 6px -2px rgba(14, 30, 46, 0.2)', // Enhanced shadow
+            boxShadow: '0 6px 8px -2px rgba(14, 30, 100, 0.4), 0 4px 6px -2px rgba(14, 30, 100, 0.3)', // Enhanced shadow with blue
           },
           '100%': {
             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)', // Back to default
