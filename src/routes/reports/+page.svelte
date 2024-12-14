@@ -4,11 +4,17 @@
   import Footer from '$lib/components/Footer.svelte';
   import MapContainer from '$lib/components/reports/MapContainer.svelte';
   import ProvinceModal from '$lib/components/reports/ProvinceModal.svelte';
+  import NotificationContainer from '$lib/components/common/NotificationContainer.svelte';
   import { provinces } from '$lib/data/provinces';
   import { onMount } from 'svelte';
   import { getReportsPerProvince } from '$lib/api/report';
 
   let reportsData = {};
+  let notifications = [
+    "Breaking News: Event 1 happened!",
+    "Update: Event 2 just occurred!",
+    "Alert: Event 3 is ongoing!"
+  ];
   let selectedProvince: string | null = null;
 
   onMount(async () => {
@@ -32,6 +38,11 @@
 <div class="layout">
   <Header />
   <main>
+    <NotificationContainer
+    {notifications}
+    entryDirection="top"
+    cycleInterval={7000}
+  />
     <MapContainer
       {provinces}
       {colorScale}
