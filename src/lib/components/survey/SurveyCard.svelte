@@ -12,7 +12,8 @@
   const handleClick = () => {
     clicked = true;
     setTimeout(() => (clicked = false), 200);
-    goto(`/surveys/${survey.id}`);
+    //goto(`/surveys/${survey.id}`);
+    //goto(`/surveys/34`);
   };
 </script>
 
