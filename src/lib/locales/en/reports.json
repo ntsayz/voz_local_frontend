@@ -1,0 +1,16 @@
+{
+  "map": {
+    "noData": "No data",
+    "clickToSeeDetails": "Click on a province to see the details",
+    "provinceDetails": {
+      "title": "Province Details",
+      "occurrences": "Number of occurrences",
+      "reportList": "Report List"
+    }
+  },
+  "common": {
+    "close": "Close",
+    "back": "Back",
+    "selectProvince": "Select a Province"
+  }
+}

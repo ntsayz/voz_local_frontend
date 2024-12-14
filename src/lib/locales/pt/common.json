@@ -1,0 +1,34 @@
+{
+  "home": "Início",
+  "dashboard": "Painel",
+  "reports": "Avisos e Ocorrências",
+  "surveys": "Sondagens",
+  "profile": "Perfil",
+  "logout": "Sair",
+  "login": "Entrar",
+  "language": "Idioma",
+  "changeLanguage" : "Alterar Idioma",
+  "openUserMenu" : "Abrir menu do utilizador",
+  "languageSwitcher": {
+    "en": "Inglês",
+    "pt": "Português"
+  },
+  "scrollingMessage": "Este website está em desenvolvimento e não representa a versão final.",
+  "footer": {
+    "aboutUs": "Sobre Nós",
+    "privacyPolicy": "Política de Privacidade",
+    "contact": "Contacto",
+    "madeWithLove": "Feito com ❤️ para Moçambique"
+  },
+  "mobileMenu": {
+    "openMenu": "Abrir menu principal",
+    "closeMenu": "Fechar menu principal"
+  },
+  "logoutConfirmation": "Você tem certeza de que deseja sair?",
+  
+  "header": {
+    "logout": "Sair",
+    "profile": "Perfil",
+    "dashboard": "Painel"
+  }
+}

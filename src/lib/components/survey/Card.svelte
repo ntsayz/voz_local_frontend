@@ -1,31 +1,39 @@
 <script lang="ts">
-    export let survey;
+  import { t } from 'svelte-i18n';
+  export let survey;
 
-    // Default colors for dynamic binary choices
-    const defaultColors = ['#4caf50', '#f44336']; // Primary and secondary colors
+  // Default colors for dynamic binary choices
+  const defaultColors = ['#4caf50', '#f44336']; // Primary and secondary colors
 
-    // Dynamically set colors if not provided in survey metadata
-    const colors = survey.results?.colors?.length > 0 ? survey.results.colors : defaultColors;
+  // Dynamically set colors if not provided in survey metadata
+  const colors = survey.results?.colors?.length > 0 ? survey.results.colors : defaultColors;
+
+  // Reactive translations for category and status
+  $: categoryTranslation = $t(`surveys.dropdowns.category.${survey.category}`);
+  $: statusTranslation = $t(`surveys.dropdowns.statuses.${survey.status}`);
+
 </script>
 
-<div 
-  class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+<div
+  class="bg-white shadow-lg rounded-lg p-6 hover:animate-pulse-shadow hover:shadow-xl transition-shadow duration-200 cursor-pointer"
   role="button"
   aria-label={`Survey: ${survey.title}`}
 >
+  <!-- Header with category and status -->
   <div class="flex justify-between items-center mb-4">
     <span class="bg-gray-200 text-gray-600 text-sm px-3 py-1 rounded-full">
-      {survey.category}
+      {categoryTranslation || survey.category}
     </span>
     <span
       class={`text-xs font-semibold px-3 py-1 rounded-full ${
-        survey.status === 'Ativo' ? 'bg-green-200 text-green-700' : 'bg-red-200 text-red-700'
+        survey.status === 'active' ? 'bg-green-200 text-green-700' : 'bg-red-200 text-red-700'
       }`}
     >
-      {survey.status}
+      {statusTranslation || survey.status}
     </span>
   </div>
 
+  <!-- Title and description -->
   <h2 class="text-xl font-bold text-gray-800">{survey.title}</h2>
   <p class="text-gray-600 text-sm mt-2">{survey.description}</p>
 
@@ -138,4 +146,5 @@
       </div>
     {/if}
   </div>
+
 </div>

@@ -1,0 +1,26 @@
+{
+  "welcome": "Welcome to Voz Local",
+  "intro": "A platform to connect and inform the Mozambican community. Here, your voice matters. Participate in debates, voice your concerns, and help shape the future of our country.",
+  "features": {
+    "polls": {
+      "title": "Polls and Public Opinions",
+      "description": "Share your opinion on important issues affecting your community. Our polls help identify what matters most to Mozambicans."
+    },
+    "reports": {
+      "title": "Report Community Issues",
+      "description": "Help the government and NGOs focus their efforts on areas that need them most by reporting problems affecting your community, such as infrastructure, safety, and health."
+    }
+  },
+  "surveys": {
+    "title": "Make Your Opinion Heard",
+    "description": "Your voice has power. Participate, vote, and share your vision. By listening to different perspectives and joining forces, we can turn challenges into opportunities and build a stronger, more connected community. Together, we drive the changes we want to see."
+  },
+  "inclusion": {
+    "title": "We Think of Everyone",
+    "description": "For us, inclusion is essential. We work to ensure that all communities, from Rovuma to Maputo, feel represented and heard. However, despite our efforts, we may not be able to reach everyone. If your community is missing, {link}.",
+    "location_sugestion_text" : "let us know here"
+  },
+  "cta": {
+    "button": "Join Us Now"
+  }
+}

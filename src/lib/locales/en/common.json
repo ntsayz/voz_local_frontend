@@ -1,0 +1,34 @@
+{
+  "home": "Home",
+  "dashboard": "Dashboard",
+  "reports": "Reports and Occurrences",
+  "surveys": "Surveys",
+  "profile": "Profile",
+  "logout": "Logout",
+  "login": "Login",
+  "changeLanguage" : "Change Language",
+  "openUserMenu" : "Open User Menu",
+  "language": "Language",
+  "languageSwitcher": {
+    "en": "English",
+    "pt": "Portuguese"
+  },
+  "scrollingMessage": "This website is under development and does not represent the final version.",
+  "footer": {
+    "aboutUs": "About Us",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact",
+    "madeWithLove": "Made with ❤️ for Mozambique"
+  },
+  "mobileMenu": {
+    "openMenu": "Open main menu",
+    "closeMenu": "Close main menu"
+  },
+  "logoutConfirmation": "Are you sure you want to logout?",
+  
+  "header": {
+    "logout": "Logout",
+    "profile": "Profile",
+    "dashboard": "Dashboard"
+  }
+}

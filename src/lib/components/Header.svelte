@@ -1,29 +1,45 @@
 <script lang="ts">
   import { auth, type AuthState } from '$lib/stores/auth';
+  import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores'; // Import the $page store
+  import { page } from '$app/stores';
+  import { t,locale } from 'svelte-i18n';
+
+
+  let isLoaded = false;
   
+
   let currentAuth: AuthState;
-  let currentPath: string; // Holds the current path from the $page store
-  let isMobileMenuOpen = false; // State for mobile menu visibility
-  let isDropdownOpen = false; // State to toggle dropdown visibility
+  let currentPath: string;
+  let isMobileMenuOpen = false;
+  let isDropdownOpen = false;
+  let isLocaleDropdownOpen = false;
+
+  // Available languages
+  const languages = [
+    { code: 'en', label: 'English', icon: '🇬🇧' },
+    { code: 'pt', label: 'Português', icon: '🇵🇹' }
+  ];
 
   const unsubscribeAuth = auth.subscribe((value) => {
     currentAuth = value;
   });
 
   const unsubscribePage = page.subscribe(($page) => {
-    currentPath = $page.url.pathname; // Get the current path
+    currentPath = $page.url.pathname;
   });
 
   function toggleMobileMenu() {
-    isMobileMenuOpen = !isMobileMenuOpen; // Toggle the menu state
+    isMobileMenuOpen = !isMobileMenuOpen;
   }
 
   function toggleDropdown() {
-    isDropdownOpen = !isDropdownOpen; // Toggle the dropdown state
+    isDropdownOpen = !isDropdownOpen;
   }
-  
+
+  function toggleLocaleDropdown() {
+    isLocaleDropdownOpen = !isLocaleDropdownOpen;
+  }
 
   function logout() {
     auth.set({ token: null, user: null });
@@ -31,6 +47,13 @@
     localStorage.removeItem('auth');
     goto('/login');
   }
+
+  // Automatically unsubscribe on component destroy (optional best practice)
+  import { onDestroy } from 'svelte';
+  onDestroy(() => {
+    unsubscribeAuth();
+    unsubscribePage();
+  });
 </script>
 
 <nav class="bg-gray-800 shadow-md">
@@ -45,7 +68,7 @@
           aria-expanded={isMobileMenuOpen}
           on:click={toggleMobileMenu}
         >
-          <span class="sr-only">Abrir menu principal</span>
+          <span class="sr-only">{$t('common.mobileMenu.openMenu')}</span>
           <svg
             class="h-6 w-6 {isMobileMenuOpen ? 'hidden' : 'block'}"
             fill="none"
@@ -78,37 +101,82 @@
         </div>
       </div>
 
-      <!-- Navigation Links -->
+      <!-- Desktop Navigation Links -->
       <div class="hidden sm:ml-6 sm:block">
         <div class="flex space-x-4">
           <a
             href="/"
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Início</a>
+          > {$t('common.home')}</a>
           {#if currentAuth.user?.role === 'admin'}
           <a
             href="/dashboard"
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Painel</a>
+          >{$t('common.dashboard')}</a>
           {/if}
           <a
             href="/reports"
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Avisos e Ocorrências</a>
+          >{$t('common.reports')}</a>
           <a
             href="/surveys"
             class="rounded-md px-3 py-2 text-sm font-medium 
             {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >Sondagens</a>
+          >{$t('common.surveys')}</a>
         </div>
       </div>
 
-      <!-- Profile / Auth Section -->
-      <!-- Profile / Auth Section -->
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+      <!-- Profile and Locale Section -->
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 space-x-4">
+        
+        <!-- Language Dropdown -->
+        <div class="relative">
+          <button
+            type="button"
+            class="flex items-center rounded-full p-2 text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            aria-expanded={isLocaleDropdownOpen}
+            aria-haspopup="true"
+            on:click={toggleLocaleDropdown}
+          >
+            <span class="sr-only">{$t('common.changeLanguage')}</span>
+            <!-- Globe Icon -->
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.556 0 8.25-3.694 8.25-8.25S16.556 3.75 12 3.75 3.75 7.444 3.75 12s3.694 8.25 8.25 8.25z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12h19.5M12 2.25v19.5" />
+            </svg>
+          </button>
+          {#if isLocaleDropdownOpen}
+            <div
+              class="absolute right-0 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20"
+              role="menu"
+              aria-orientation="vertical"
+              tabindex="-1"
+            >
+              {#each languages as lang}
+                <button
+                  class="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem"
+                  tabindex="-1"
+                  on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
+                >
+                  <span class="mr-2">{lang.icon}</span>
+                  {lang.label}
+                </button>
+              {/each}
+            </div>
+          {/if}
+        </div>
+        
         {#if currentAuth.user}
           <!-- Logged-in User Dropdown -->
           <div class="relative ml-3">
@@ -120,7 +188,7 @@
               aria-haspopup="true"
               on:click={toggleDropdown}
             >
-              <span class="sr-only">Abrir menu do utilizador</span>
+              <span class="sr-only">{$t('common.openUserMenu')}</span>
               <img
                 class="h-8 w-8 rounded-full"
                 src="https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
@@ -140,7 +208,7 @@
                   class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   on:click={logout}
                 >
-                  Sair
+                {$t('common.logout')}
                 </button>
               </div>
             {/if}
@@ -151,7 +219,7 @@
             href="/login"
             class="rounded-md bg-primary-500 px-3 py-2 text-sm font-medium text-white hover:bg-primary-700"
           >
-            Entrar
+          {$t('common.login')}
           </a>
         {/if}
       </div>
@@ -191,25 +259,39 @@
           href="/"
           class="block rounded-md px-3 py-2 text-base font-medium 
           {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >Início</a>
+        >{$t('common.home')}</a>
         {#if currentAuth.user?.role === 'admin'}
         <a
           href="/dashboard"
           class="block rounded-md px-3 py-2 text-base font-medium 
           {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >Painel</a>
+        >{$t('common.dashboard')}</a>
         {/if}
         <a
           href="/reports"
           class="block rounded-md px-3 py-2 text-base font-medium 
           {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >Avisos e Ocorrências</a>
+        >{$t('common.reports')}</a>
         <a
           href="/surveys"
           class="block rounded-md px-3 py-2 text-base font-medium 
           {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >Sondagens</a>
+        >{$t('common.surveys')}</a>
       </nav>
+
+      <!-- Language Switcher on Mobile -->
+      <div class="mt-4">
+        <h2 class="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-2">{$t('common.language')}</h2>
+        {#each languages as lang}
+          <button
+            class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+            on:click={() => { locale.set(lang.code); toggleMobileMenu(); }}
+          >
+            <span class="mr-2">{lang.icon}</span>
+            {lang.label}
+          </button>
+        {/each}
+      </div>
     </div>
   </div>
 </nav>

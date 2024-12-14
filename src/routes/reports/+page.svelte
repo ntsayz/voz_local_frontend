@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from 'svelte-i18n';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import { onMount } from 'svelte';
@@ -49,7 +50,7 @@
       />
       {#if !selectedProvince}
         <p class="absolute bottom-4 left-4 bg-gray-800 text-white px-4 py-2 rounded-md shadow-md text-sm">
-          Clique numa província para ver os detalhes.
+          {$t('reports.map.clickToSeeDetails')}
         </p>
       {/if}
     </div>
@@ -78,7 +79,7 @@
             {provinces.find((p) => p.id === selectedProvince)?.name || "Detalhes da Província"}
           </h2>
           <p id="province-description" class="text-gray-600 text-lg mt-4">
-            <span class="font-medium">Número de ocorrências:</span> {reportsData[selectedProvince]?.count || 0}
+            <span class="font-medium">{$t('reports.map.provinceDetails.occurrences')}:</span> {reportsData[selectedProvince]?.count || 0}
           </p>
           <ul class="mt-4 space-y-2 text-gray-700 text-sm">
             {#each reportsData[selectedProvince]?.details || [] as detail}
