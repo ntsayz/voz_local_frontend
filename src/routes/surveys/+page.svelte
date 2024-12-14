@@ -2,7 +2,7 @@
   import { t } from 'svelte-i18n';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
-  import SurveyCard from '$lib/components/survey/Card.svelte';
+  import SurveyCard from '$lib/components/survey/SurveyCard.svelte';
   import Filters from '$lib/components/survey/Filters.svelte';
   import { mockSurveys } from '$lib/data/mock/surveys';
 

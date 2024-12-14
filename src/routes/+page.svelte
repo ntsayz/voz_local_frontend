@@ -7,7 +7,7 @@
   import SurveysSection from '$lib/components/home/SurveysSection.svelte';
   import InclusionSection from '$lib/components/home/InclusionSection.svelte';
   import CTASection from '$lib/components/home/CTASection.svelte';
-  import SurveyCard from '$lib/components/survey/Card.svelte';
+  import SurveyCard from '$lib/components/survey/SurveyCard.svelte';
   import { onMount } from 'svelte';
   import 'aos/dist/aos.css';
   // @ts-ignore
