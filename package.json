@@ -43,6 +43,7 @@
 		"aos": "^2.3.4",
 		"chart.js": "^4.4.6",
 		"intl-tel-input": "^24.7.0",
-		"svelte-i18n": "^4.0.1"
+		"svelte-i18n": "^4.0.1",
+		"tsparticles": "^3.7.1"
 	}
 }

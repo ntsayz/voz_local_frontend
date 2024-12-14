@@ -202,5 +202,8 @@
 /* Make the main content take up remaining space */
 main {
   flex: 1;
+
 }
+
+
 </style>

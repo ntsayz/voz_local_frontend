@@ -15,7 +15,7 @@
 </script>
 
 <div
-  class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+  class="bg-white shadow-lg rounded-lg p-6 hover:animate-pulse-shadow hover:shadow-xl transition-shadow duration-200 cursor-pointer"
   role="button"
   aria-label={`Survey: ${survey.title}`}
 >
