@@ -53,6 +53,7 @@
     on:mouseleave={endDrag}
     on:mousemove={handleMouseMove}
   >
+    <!-- Map Content -->
     <div
       class="map-inner"
       style="transform: scale({scale}) translate({translateX}px, {translateY}px);"
@@ -65,9 +66,24 @@
         tooltipFormatter={tooltipFormatter}
       />
     </div>
+  
+    <!-- Floating Legend -->
+    <div class="floating-legend">
+      <div class="legend-background">
+        <h3 class="legend-title">Occurrences</h3>
+        <div class="gradient-container">
+          <div class="gradient-bar"></div>
+          <div class="gradient-labels">
+            <span class="label-less">Less</span>
+            <span class="label-more">More</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   
   <style>
+    /* Map Container */
     .map-container {
       position: relative;
       width: 90%;
@@ -90,5 +106,70 @@
     .map-inner {
       transform-origin: center center;
       transition: transform 0.1s ease;
+    }
+  
+    /* Floating Legend */
+    .floating-legend {
+      position: absolute;
+      bottom: 2%;
+      right: 4%;
+      width: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+    }
+  
+    .legend-background {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .legend-title {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+  
+    .gradient-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+  
+    .gradient-bar {
+      width: 20px;
+      height: 100px;
+      background: linear-gradient(to bottom, #26547c, #5790b3, #e3edf3);
+      border-radius: 8px;
+    }
+  
+    .gradient-labels {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      font-weight: lighter;
+      color: #555;
+      gap: 8px;
+    }
+  
+    .label-less {
+      transform: rotate(-90deg);
+      align-self: flex-start;
+    }
+  
+    .label-more {
+      transform: rotate(-90deg);
+      align-self: flex-end;
     }
   </style>
