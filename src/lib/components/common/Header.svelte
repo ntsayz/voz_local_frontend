@@ -3,11 +3,9 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
-  import { t,locale } from 'svelte-i18n';
-
+  import { t, locale } from 'svelte-i18n';
 
   let isLoaded = false;
-  
 
   let currentAuth: AuthState;
   let currentPath: string;
@@ -33,10 +31,6 @@
     isMobileMenuOpen = !isMobileMenuOpen;
   }
 
-  function toggleDropdown() {
-    isDropdownOpen = !isDropdownOpen;
-  }
-
   function toggleLocaleDropdown() {
     isLocaleDropdownOpen = !isLocaleDropdownOpen;
   }
@@ -48,7 +42,6 @@
     goto('/login');
   }
 
-  // Automatically unsubscribe on component destroy (optional best practice)
   import { onDestroy } from 'svelte';
   onDestroy(() => {
     unsubscribeAuth();
@@ -128,102 +121,6 @@
           >{$t('common.surveys')}</a>
         </div>
       </div>
-
-      <!-- Profile and Locale Section -->
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 space-x-4">
-        
-        <!-- Language Dropdown -->
-        <div class="relative">
-          <button
-            type="button"
-            class="flex items-center rounded-full p-2 text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            aria-expanded={isLocaleDropdownOpen}
-            aria-haspopup="true"
-            on:click={toggleLocaleDropdown}
-          >
-            <span class="sr-only">{$t('common.changeLanguage')}</span>
-            <!-- Globe Icon -->
-            <svg
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.556 0 8.25-3.694 8.25-8.25S16.556 3.75 12 3.75 3.75 7.444 3.75 12s3.694 8.25 8.25 8.25z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12h19.5M12 2.25v19.5" />
-            </svg>
-          </button>
-          {#if isLocaleDropdownOpen}
-            <div
-              class="absolute right-0 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20"
-              role="menu"
-              aria-orientation="vertical"
-              tabindex="-1"
-            >
-              {#each languages as lang}
-                <button
-                  class="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  role="menuitem"
-                  tabindex="-1"
-                  on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
-                >
-                  <span class="mr-2">{lang.icon}</span>
-                  {lang.label}
-                </button>
-              {/each}
-            </div>
-          {/if}
-        </div>
-        
-        {#if currentAuth.user}
-          <!-- Logged-in User Dropdown -->
-          <div class="relative ml-3">
-            <button
-              type="button"
-              class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              id="user-menu-button"
-              aria-expanded={isDropdownOpen}
-              aria-haspopup="true"
-              on:click={toggleDropdown}
-            >
-              <span class="sr-only">{$t('common.openUserMenu')}</span>
-              <img
-                class="h-8 w-8 rounded-full"
-                src="https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
-                alt="Avatar do utilizador"
-              />
-            </button>
-            {#if isDropdownOpen}
-              <div
-                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="user-menu-button"
-                tabindex="-1"
-              >
-                <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Perfil</a>
-                <button
-                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  on:click={logout}
-                >
-                {$t('common.logout')}
-                </button>
-              </div>
-            {/if}
-          </div>
-        {:else if currentPath !== '/login' && currentPath !== '/register'}
-          <!-- Login Button -->
-          <a
-            href="/login"
-            class="rounded-md bg-primary-500 px-3 py-2 text-sm font-medium text-white hover:bg-primary-700"
-          >
-          {$t('common.login')}
-          </a>
-        {/if}
-      </div>
-
     </div>
   </div>
 
@@ -279,18 +176,44 @@
         >{$t('common.surveys')}</a>
       </nav>
 
-      <!-- Language Switcher on Mobile -->
-      <div class="mt-4">
-        <h2 class="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-2">{$t('common.language')}</h2>
-        {#each languages as lang}
-          <button
-            class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
-            on:click={() => { locale.set(lang.code); toggleMobileMenu(); }}
-          >
-            <span class="mr-2">{lang.icon}</span>
-            {lang.label}
-          </button>
-        {/each}
+      <!-- Login and Locale Dropdown -->
+      <div class="mt-4 border-t border-gray-300 pt-4">
+        {#if currentAuth.user}
+        <a
+          href="/profile"
+          class="block text-sm font-medium text-gray-700 hover:text-gray-900"
+        >
+          {$t('common.profile')}
+        </a>
+        <button
+          class="block text-left text-sm font-medium text-gray-700 hover:text-gray-900"
+          on:click={logout}
+        >
+          {$t('common.logout')}
+        </button>
+        {:else}
+        <a
+          href="/login"
+          class="block text-sm font-medium text-gray-700 hover:text-gray-900"
+        >
+          {$t('common.login')}
+        </a>
+        {/if}
+
+        <div class="mt-2">
+          <h2 class="text-sm font-medium text-gray-500">{$t('common.language')}</h2>
+          <div class="space-y-2">
+            {#each languages as lang}
+            <button
+              class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+              on:click={() => { locale.set(lang.code); toggleMobileMenu(); }}
+            >
+              <span class="mr-2">{lang.icon}</span>
+              {lang.label}
+            </button>
+            {/each}
+          </div>
+        </div>
       </div>
     </div>
   </div>
