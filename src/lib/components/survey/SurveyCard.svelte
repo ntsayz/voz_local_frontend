@@ -5,7 +5,6 @@
   import SurveyRanking from '$lib/components/survey/pollComponents/Ranking.svelte';
   import SurveyMatrix from '$lib/components/survey/pollComponents/Matrix.svelte';
   import { goto } from '$app/navigation';
-
   export let survey;
 
   let clicked = false;
@@ -13,7 +12,7 @@
   const handleClick = () => {
     clicked = true;
     setTimeout(() => (clicked = false), 200);
-    goto(`/surveys/34`);
+    goto(`/surveys/${survey.id}`);
   };
 </script>
 
