@@ -4,8 +4,8 @@
     "clickToSeeDetails": "Click on a province to see the details",
     "legend": {
       "title": "Legend",
-      "moreOccurrences": "More Occurrences",
-      "lessOccurrences": "Less Occurrences"
+      "moreOccurrences": "More",
+      "lessOccurrences": "Less"
     },
     "provinceDetails": {
       "title": "Province Details",

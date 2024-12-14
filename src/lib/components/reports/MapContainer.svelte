@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { t } from 'svelte-i18n';
     import Map from '$lib/components/reports/Map.svelte';
-  
     export let provinces: { id: string; name: string; d: string }[] = [];
     export let data: { [key: string]: { count: number; details: string[] } } = {};
     export let colorScale: (count: number) => string = (count) => '#ccc';
@@ -69,17 +69,17 @@
   
     <!-- Floating Legend -->
     <div class="floating-legend">
-      <div class="legend-background">
-        <h3 class="legend-title">Occurrences</h3>
-        <div class="gradient-container">
-          <div class="gradient-bar"></div>
-          <div class="gradient-labels">
-            <span class="label-less">Less</span>
-            <span class="label-more">More</span>
+        <div class="legend-background">
+          
+          <div class="gradient-container">
+            <div class="gradient-bar"></div>
+            <div class="gradient-labels">
+              <span class="label-plus">{$t('reports.map.legend.moreOccurrences')}</span>
+              <span class="label-minus">{$t('reports.map.legend.lessOccurrences')}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
   
   <style>
@@ -110,66 +110,63 @@
   
     /* Floating Legend */
     .floating-legend {
-      position: absolute;
-      bottom: 2%;
-      right: 4%;
-      width: 100px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      z-index: 10;
-    }
-  
-    .legend-background {
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-      padding: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .legend-title {
-      font-size: 14px;
-      margin-bottom: 8px;
-      color: #333;
-    }
-  
-    .gradient-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      width: 100%;
-    }
-  
-    .gradient-bar {
-      width: 20px;
-      height: 100px;
-      background: linear-gradient(to bottom, #26547c, #5790b3, #e3edf3);
-      border-radius: 8px;
-    }
-  
-    .gradient-labels {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 12px;
-      font-weight: lighter;
-      color: #555;
-      gap: 8px;
-    }
-  
-    .label-less {
-      transform: rotate(-90deg);
-      align-self: flex-start;
-    }
-  
-    .label-more {
-      transform: rotate(-90deg);
-      align-self: flex-end;
-    }
+    position: absolute;
+    bottom: 2%;
+    right: 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .legend-background {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .legend-title {
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  .gradient-container {
+    display: flex;
+    align-items: center; /* Align items horizontally */
+    gap: 8px; /* Add space between gradient and labels */
+  }
+
+  .gradient-bar {
+    width: 20px;
+    height: 100px;
+    background: linear-gradient(to bottom, #26547c, #5790b3, #e3edf3);
+    border-radius: 8px;
+  }
+
+  .gradient-labels {
+    display: flex;
+    flex-direction: column; /* Stack labels vertically */
+    justify-content: space-between;
+    align-items: flex-start; /* Align to the start of the gradient */
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    height: 100px; /* Match the gradient height */
+  }
+
+  .label-plus {
+    margin-top: -2px; /* Align to top */
+    margin-right: -2px; /* Align to top */
+  }
+
+  .label-minus {
+    margin-bottom: -2px; /* Align to bottom */
+  }
   </style>
