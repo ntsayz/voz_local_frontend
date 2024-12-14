@@ -9,7 +9,7 @@
   >
     <!-- Polls Section -->
     <div 
-        class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-500 transition flex items-center justify-center hover:animate-pulse-shadow"
+        class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-500 transition flex items-center justify-center animate-pulse-shadow"
         data-aos="fade-up"
       >
       <div class="flex flex-col items-center md:items-start">
@@ -26,7 +26,7 @@
         >
           {$t('home.features.polls.title')}
         </h2>
-        <p class="text-gray-600" data-aos="fade-in" data-aos-delay="1000">
+        <p class="text-gray-600" data-aos="fade-in" data-aos-delay="800">
           {$t('home.features.polls.description')}
         </p>
       </div>
@@ -34,7 +34,7 @@
   
     <!-- Reports Section -->
     <div 
-        class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
+        class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center animate-pulse-shadow"
         data-aos="fade-up"
       >
       <div class="flex flex-col items-center md:items-start">
@@ -51,7 +51,7 @@
         >
           {$t('home.features.reports.title')}
         </h2>
-        <p class="text-gray-600" data-aos="fade-in" data-aos-delay="1000">
+        <p class="text-gray-600" data-aos="fade-in" data-aos-delay="800">
           {$t('home.features.reports.description')}
         </p>
       </div>

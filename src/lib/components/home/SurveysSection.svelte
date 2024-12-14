@@ -19,7 +19,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
       {#each mockSurveys as survey (survey.id)}
         <div 
-          class="group relative p-3 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
+          class="group relative p-3 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center animate-pulse-shadow"
           data-aos="fade-up"
         >
           <SurveyCard {survey} />
