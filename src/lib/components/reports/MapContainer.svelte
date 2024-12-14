@@ -18,10 +18,10 @@
   let lastMouseY = 0;
 
   let notifications = [
-    "Breaking News: Event 1 happened!",
-    "Update: Event 2 just occurred!",
-    "Alert: Event 3 is ongoing!"
-  ];
+    "Corte de energia reportado na Cidade de Maputo. Equipes em reparação.",
+    "Chuvas intensas previstas em Cabo Delgado. Alerta para inundações.",
+    "Obras na estrada causam atrasos em Nampula. Utilize rotas alternativas."
+];
 
 
 
@@ -66,11 +66,18 @@
   on:mouseleave={endDrag}
   on:mousemove={handleMouseMove}
 >
+<NotificationContainer
+    {notifications}
+    entryDirection="top"
+    cycleInterval={7000}
+  />
   <!-- Map Content -->
   <div
     class="map-inner"
     style="transform: scale({scale}) translate({translateX}px, {translateY}px);"
   >
+
+  
     <Map
       {provinces}
       data={data}
@@ -94,11 +101,7 @@
   </div>
 
   <!-- News Container -->
-  <NotificationContainer
-    {notifications}
-    entryDirection="bottom"
-    cycleInterval={7000}
-  />
+  
 </div>
 
 <style>

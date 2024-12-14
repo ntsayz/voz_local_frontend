@@ -41,8 +41,7 @@
   <style>
     .notification-container {
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 45%;
       max-width: 90%; /* Stretch up to 90% of the parent container width */
       padding: 10px 20px;
       border: 1px solid; /* Border color handled via inline style */
@@ -54,10 +53,11 @@
       animation: slide-in-out 5s ease-in-out infinite;
       z-index: 10;
       overflow-wrap: break-word; /* Ensures text wraps properly */
-      max-height: 500px; /* Limit maximum height */
+      max-height: 1000px; /* Limit maximum height */
       overflow-y: auto; /* Add vertical scroll if content exceeds height */
       transition: transform 0.5s ease, color 0.3s ease;
     }
+    
   
     /* Hover Effect for Container */
     .notification-container:hover {
@@ -96,9 +96,12 @@
     /* Responsive Adjustments */
     @media (max-width: 768px) {
       .notification-container {
-        max-width: 95%;
+        max-width: 90%;
+        left: 5%;
         padding: 8px 16px;
         font-size: 12px;
       }
     }
+
+    
   </style>
