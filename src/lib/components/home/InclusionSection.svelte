@@ -20,7 +20,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
       <!-- Image Cards -->
       <div 
-          class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
+          class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center animate-pulse-shadow"
           data-aos="fade-up"
       >
           <div 
@@ -36,7 +36,7 @@
           </div>
       </div>
       <div 
-          class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center hover:animate-pulse-shadow"
+          class="group relative p-7 border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-primary-100 transition flex items-center justify-center animate-pulse-shadow"
           data-aos="fade-up"
       >
           <div 

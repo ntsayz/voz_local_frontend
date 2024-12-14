@@ -17,7 +17,7 @@
     }
   
     function handleHover(provinceId: string) {
-      hoveredProvince = provinceId;
+      hoveredProvince = provinces.find((p) => p.id === provinceId)?.name || null;
     }
   
     function handleMouseOut() {
@@ -25,7 +25,11 @@
     }
   </script>
   
-  <div class="map-container">
+  <div class="map-container relative">
+    <div class="hovered-province-name absolute top-4 right-4 px-4 py-2 bg-gray-800 text-white rounded-md text-sm shadow-md transition-opacity duration-900"
+    style="opacity: {hoveredProvince ? 1 : 0}; visibility: {hoveredProvince ? 'visible' : 'hidden'};">
+    {hoveredProvince}
+  </div>
     <!-- Embed the SVG map -->
     <!-- Replace the content below with the actual content of mz_provinces.svg -->
     <svg fill="#26547C" height="1000" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5" version="1.2" viewbox="0 0 1000 1000" width="1000" xmlns="http://www.w3.org/2000/svg">
@@ -84,42 +88,64 @@
     
   
   
-  <style>
-    .map-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-    }
-  
-    path {
-      fill: #ccc;
-      stroke: #333;
-      cursor: pointer;
-      transition: fill 0.2s;
-    }
-
-    .tooltip {
-      position: absolute;
-      background-color: #26547C;
-      color: #fff;
-      padding: 5px 8px;
-      border-radius: 4px;
-      pointer-events: none;
-      font-size: 14px;
-      z-index: 1000;
-    }
-  
-    @media (max-width: 800px) {
+    <style>
       .map-container {
+        position: relative;
         width: 100%;
+        max-width: 800px;
         height: auto;
       }
-  
-      svg {
-        width: 100%;
-        height: auto;
+    
+      path {
+        fill: #ccc;
+        stroke: #333;
+        cursor: pointer;
+        transform-origin: center center; /* Keep the scaling origin at the center */
+        transition: transform 0.3s ease, fill 0.3s ease; /* Smooth transition for scaling and fill */
       }
-    }
-  </style>
+    
+      path:hover {
+        transform: scale(1.004) translateX(-2%); /* Scale and shift slightly to the left */
+        fill: #9A031E; /* Change the fill color when hovering */
+        stroke: #9A031E; /* Optionally change the stroke color */
+      }
+    
+      path:focus {
+        transform: scale(1.05) translateX(-2.5%); /* Same effect as hover with a slightly larger scale */
+        fill: #FAF2A1;
+        stroke: #26547C;
+        outline: none; /* Remove default outline */
+      }
+    
+      .hovered-province-name {
+        position: absolute;
+        top: 1rem; /* Position in the top-right corner */
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #333; /* Dark background for contrast */
+        color: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-size: 0.875rem;
+        transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-in and fade-out */
+        pointer-events: none; /* Prevent interaction with the box */
+        z-index: 10;
+      }
+    
+      .hovered-province-name[style*="opacity: 0"] {
+        visibility: hidden; /* Ensure it doesn't block mouse events when invisible */
+      }
+    
+      @media (max-width: 800px) {
+        .map-container {
+          width: 100%;
+          height: auto;
+        }
+    
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+    </style>
   
