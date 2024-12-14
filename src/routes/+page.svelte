@@ -1,7 +1,7 @@
 <script>
   import { t } from 'svelte-i18n';
-  import Header from '$lib/components/Header.svelte';
-  import Footer from '$lib/components/Footer.svelte';
+  import Header from '$lib/components/common/Header.svelte';
+  import Footer from '$lib/components/common/Footer.svelte';
   import MainHeading from '$lib/components/home/MainHeading.svelte';
   import FeaturesSection from '$lib/components/home/FeaturesSection.svelte';
   import SurveysSection from '$lib/components/home/SurveysSection.svelte';

@@ -3,8 +3,8 @@
   import { page } from '$app/stores';
   import { getSurveyById } from '$lib/api/surveys';
   import { t } from 'svelte-i18n';
-  import Header from '$lib/components/Header.svelte';
-  import Footer from '$lib/components/Footer.svelte';
+  import Header from '$lib/components/common/Header.svelte';
+  import Footer from '$lib/components/common/Footer.svelte';
   import LoadingScreen from '$lib/components/common/LoadingScreen.svelte';
 
   export let data; // Preloaded survey data (optional with load function)
