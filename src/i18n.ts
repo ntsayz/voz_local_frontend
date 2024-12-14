@@ -1,5 +1,5 @@
 // src/lib/i18n.ts
-import { register, init, getLocaleFromNavigator } from 'svelte-i18n';
+import { register, init, getLocaleFromNavigator, locale } from 'svelte-i18n';
 
 // Import translations for each namespace manually
 import enCommon from '$lib/locales/en/common.json';
@@ -35,8 +35,13 @@ const pt = {
 register('en', () => Promise.resolve(en));
 register('pt', () => Promise.resolve(pt));
 
-// Initialize svelte-i18n
-await init({
-  fallbackLocale: 'en',
-  initialLocale: getLocaleFromNavigator()
-});
+// Set a default locale synchronously to avoid issues
+locale.set('pt'); // Fallback locale
+
+// Initialize asynchronously
+export const initializeI18n = async () => {
+  await init({
+    fallbackLocale: 'pt',
+    initialLocale: getLocaleFromNavigator(),
+  });
+};
