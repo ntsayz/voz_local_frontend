@@ -3,6 +3,8 @@
     import { page } from '$app/stores';
     import { getSurveys, getSurveyById } from '$lib/api/surveys';
     import { t } from 'svelte-i18n';
+	import Header from '$lib/components/Header.svelte';
+    import Footer from '$lib/components/Footer.svelte';
   
     export let data; // Preloaded survey data (optional with load function)
     let survey;
@@ -22,7 +24,8 @@
     }
   });
   </script>
-  
+<Header />
+
   <div class="container mx-auto p-6">
     {#if survey}
       <h1 class="text-3xl font-bold text-gray-800">{survey.title}</h1>
@@ -32,3 +35,5 @@
       <p>Loading...</p>
     {/if}
   </div>
+
+<Footer/>
