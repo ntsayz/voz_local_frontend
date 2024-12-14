@@ -38,11 +38,6 @@
 <div class="layout">
   <Header />
   <main>
-    <NotificationContainer
-    {notifications}
-    entryDirection="top"
-    cycleInterval={7000}
-  />
     <MapContainer
       {provinces}
       {colorScale}
