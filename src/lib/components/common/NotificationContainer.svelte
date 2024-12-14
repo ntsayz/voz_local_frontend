@@ -11,14 +11,17 @@
     export let blurAmount = 10; // Default blur intensity
     
     let currentNotificationIndex = 0;
-  
+
+    // Align the cycle interval with the animation duration
+    const animationDuration = 5500; // Total animation duration in milliseconds
+
     function cycleNotifications() {
       currentNotificationIndex = (currentNotificationIndex + 1) % notifications.length;
     }
-  
+
     // Auto-cycle notifications if enabled
     if (autoCycle && notifications.length > 1) {
-      setInterval(cycleNotifications, cycleInterval);
+      setInterval(cycleNotifications, animationDuration);
     }
 </script>
   
@@ -41,7 +44,7 @@
 <style>
     .notification-container {
         position: absolute;
-        left: 45%;
+        left:35%;
         transform: translateX(-50%);
         max-width: 90%; /* Stretch up to 90% of the parent container width */
         padding: 10px 20px;
@@ -51,7 +54,7 @@
         font-size: 14px;
         font-weight: bold;
         color: #333;
-        animation: slide-in-out-bottom 5s ease-in-out infinite; /* Default animation */
+        animation: slide-in-out-bottom 5.5s ease-in-out infinite; /* Match animation duration with cycling */
         z-index: 10;
         overflow-wrap: break-word; /* Ensures text wraps properly */
         max-height: 500px; /* Limit maximum height */
@@ -62,7 +65,7 @@
     /* Change animation based on direction */
     .notification-container.top {
         top: 10px;
-        animation: slide-in-out-top 5s ease-in-out infinite;
+        animation: slide-in-out-top 5.5s ease-in-out infinite; /* Match animation duration */
     }
     
     .notification-container.bottom {
@@ -78,7 +81,7 @@
     /* Keyframes for sliding in from the bottom */
     @keyframes slide-in-out-bottom {
         0% {
-            transform: translateY(30px);
+            transform: translateY(50px);
             opacity: 0;
         }
         10% {
@@ -86,10 +89,11 @@
             opacity: 1;
         }
         90% {
+            transform: translateY(0);
             opacity: 1;
         }
         100% {
-            transform: translateY(30px);
+            transform: translateY(50px);
             opacity: 0;
         }
     }
@@ -97,7 +101,7 @@
     /* Keyframes for sliding in from the top */
     @keyframes slide-in-out-top {
         0% {
-            transform: translateY(-30px);
+            transform: translateY(-50px);
             opacity: 0;
         }
         10% {
@@ -105,10 +109,11 @@
             opacity: 1;
         }
         90% {
+            transform: translateY(0);
             opacity: 1;
         }
         100% {
-            transform: translateY(-30px);
+            transform: translateY(-50px);
             opacity: 0;
         }
     }
