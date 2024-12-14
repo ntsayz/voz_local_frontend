@@ -6,8 +6,8 @@
     import intlTelInput from 'intl-tel-input';
     import { register } from '$lib/api/auth';
     import { goto } from '$app/navigation';
-    import Footer from '$lib/components/Footer.svelte';
-    import Header from '$lib/components/Header.svelte';
+    import Footer from '$lib/components/common/Footer.svelte';
+    import Header from '$lib/components/common/Header.svelte';
 
     let email = '';
     let username = '';

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { t } from 'svelte-i18n';
-  import Header from '$lib/components/Header.svelte';
-  import Footer from '$lib/components/Footer.svelte';
+  import Header from '$lib/components/common/Header.svelte';
+  import Footer from '$lib/components/common/Footer.svelte';
   import MapContainer from '$lib/components/reports/MapContainer.svelte';
   import ProvinceModal from '$lib/components/reports/ProvinceModal.svelte';
   import NotificationContainer from '$lib/components/common/NotificationContainer.svelte';

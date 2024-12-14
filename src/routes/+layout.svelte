@@ -4,6 +4,7 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { fetchLocations } from '$lib/stores/locations';
+	import LoadingScreen from '$lib/components/common/LoadingScreen.svelte';
 	import { writable } from 'svelte/store';
 
 	// Reactive state for readiness
@@ -24,5 +25,5 @@
 {#if $ready}
 	<slot /> <!-- Properly render children here using <slot /> -->
 {:else}
-	<p>Loading...</p>
+	<LoadingScreen/>
 {/if}
