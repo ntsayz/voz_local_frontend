@@ -17,8 +17,8 @@
       title: 'Preferências de Transporte',
       description: 'Indique o meio de transporte que mais usa no seu dia a dia.',
       type: 'single_choice',
-      status: 'Ativo',
-      category: 'Transporte',
+      status: 'active',
+      category: 'transport',
       results: [
         { label: 'Transporte público (Chapa, autocarro)', votes: 60 },
         { label: 'Veículo pessoal', votes: 25 },
@@ -32,8 +32,8 @@
         title: 'Percepção sobre a Transformação Digital',
         description: 'Como é que acha que a transformação digital poderia beneficiar a sua comunidade?',
         type: 'ranking',
-        status: 'Ativo',
-        category: ' Tecnologia',
+        status: 'active',
+        category: 'technology',
         results: [
           { label: 'Acesso a consultas e serviços de saúde online', rank: 1 },
           { label: 'Acesso online a serviços públicos e administrativos', rank: 2 },
@@ -47,6 +47,7 @@
       duration: 800, // Animation duration
       easing: 'ease-in-out', // Animation easing
       once: true, // Run animation only once
+      anchorPlacement: 'top-center',
     });
   });
 </script>
@@ -121,8 +122,10 @@
         </p>
       </div>
     </div>
-    <div>
 
+    
+  <div
+  >
 
     <!-- Surveys Section -->
     <h3 
@@ -146,7 +149,6 @@
         </div>
       {/each}
     </div>
-    
     
 
   </div>
