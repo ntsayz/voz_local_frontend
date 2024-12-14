@@ -1,5 +1,6 @@
 <script lang="ts">
   import { t } from 'svelte-i18n';
+  import { goto } from '$app/navigation';
   export let survey;
 
   // Default colors for dynamic binary choices
@@ -11,12 +12,14 @@
   // Reactive translations for category and status
   $: categoryTranslation = $t(`surveys.dropdowns.category.${survey.category}`);
   $: statusTranslation = $t(`surveys.dropdowns.statuses.${survey.status}`);
+  
 
   let clicked = false;
 
   const handleClick = () => {
     clicked = true;
     setTimeout(() => (clicked = false), 200); // Reset after animation
+    //goto(`/surveys/${survey.id}`);
   };
 
 </script>
