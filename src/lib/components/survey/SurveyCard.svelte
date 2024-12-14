@@ -12,11 +12,20 @@
   $: categoryTranslation = $t(`surveys.dropdowns.category.${survey.category}`);
   $: statusTranslation = $t(`surveys.dropdowns.statuses.${survey.status}`);
 
+  let clicked = false;
+
+  const handleClick = () => {
+    clicked = true;
+    setTimeout(() => (clicked = false), 200); // Reset after animation
+  };
+
 </script>
 
 <div
-  class="bg-white shadow-lg rounded-lg p-6 hover:animate-pulse-shadow hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+class="survey-card select-none bg-white shadow-lg rounded-lg p-6 hover:animate-pulse-shadow hover:shadow-xl transition-transform duration-200"
   role="button"
+  class:clicked={clicked}
+  on:click={handleClick}
   aria-label={`Survey: ${survey.title}`}
 >
   <!-- Header with category and status -->
@@ -148,3 +157,15 @@
   </div>
 
 </div>
+
+<style>
+  .survey-card {
+    transform: scale(1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .survey-card.clicked {
+    transform: scale(1.05); /* Slightly increase the size */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Add a more prominent shadow */
+  }
+</style>
