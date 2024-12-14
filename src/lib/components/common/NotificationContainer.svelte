@@ -20,9 +20,9 @@
     if (autoCycle && notifications.length > 1) {
       setInterval(cycleNotifications, cycleInterval);
     }
-  </script>
+</script>
   
-  <div
+<div
     class={`notification-container ${entryDirection}`}
     style="
       background: {bgColor};
@@ -32,76 +32,94 @@
     "
     on:mouseenter={() => onHover?.()}
     on:click={() => onClick?.()}
-  >
+>
     <div class="notification-content">
-      {notifications[currentNotificationIndex]}
+        {notifications[currentNotificationIndex]}
     </div>
-  </div>
-  
-  <style>
+</div>
+
+<style>
     .notification-container {
-      position: absolute;
-      left: 45%;
-      max-width: 90%; /* Stretch up to 90% of the parent container width */
-      padding: 10px 20px;
-      border: 1px solid; /* Border color handled via inline style */
-      border-radius: 12px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: bold;
-      color: #333;
-      animation: slide-in-out 5s ease-in-out infinite;
-      z-index: 10;
-      overflow-wrap: break-word; /* Ensures text wraps properly */
-      max-height: 1000px; /* Limit maximum height */
-      overflow-y: auto; /* Add vertical scroll if content exceeds height */
-      transition: transform 0.5s ease, color 0.3s ease;
-    }
-    
-  
-    /* Hover Effect for Container */
-    .notification-container:hover {
-      transform: translateX(-50%) translateY(-10px); /* Move the container up slightly */
-      color: #000;
-    }
-  
-    /* Entry Direction Styling */
-    .notification-container.bottom {
-      bottom: 10px;
-    }
-  
-    .notification-container.top {
-      top: 10px;
-    }
-  
-    /* Keyframes for sliding */
-    @keyframes slide-in-out {
-      0% {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-      10% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-    }
-  
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .notification-container {
-        max-width: 90%;
-        left: 5%;
-        padding: 8px 16px;
-        font-size: 12px;
-      }
+        position: absolute;
+        left: 45%;
+        transform: translateX(-50%);
+        max-width: 90%; /* Stretch up to 90% of the parent container width */
+        padding: 10px 20px;
+        border: 1px solid; /* Border color handled via inline style */
+        border-radius: 12px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        animation: slide-in-out-bottom 5s ease-in-out infinite; /* Default animation */
+        z-index: 10;
+        overflow-wrap: break-word; /* Ensures text wraps properly */
+        max-height: 500px; /* Limit maximum height */
+        overflow-y: auto; /* Add vertical scroll if content exceeds height */
+        transition: transform 0.5s ease, color 0.3s ease;
     }
 
+    /* Change animation based on direction */
+    .notification-container.top {
+        top: 10px;
+        animation: slide-in-out-top 5s ease-in-out infinite;
+    }
     
-  </style>
+    .notification-container.bottom {
+        bottom: 10px;
+    }
+
+    /* Hover Effect for Container */
+    .notification-container:hover {
+        transform: translateX(-50%) translateY(-10px); /* Move the container up slightly */
+        color: #000;
+    }
+
+    /* Keyframes for sliding in from the bottom */
+    @keyframes slide-in-out-bottom {
+        0% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        10% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+    }
+
+    /* Keyframes for sliding in from the top */
+    @keyframes slide-in-out-top {
+        0% {
+            transform: translateY(-30px);
+            opacity: 0;
+        }
+        10% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-30px);
+            opacity: 0;
+        }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .notification-container {
+            max-width: 90%;
+            left: 5%;
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+    }
+</style>
