@@ -1,30 +1,44 @@
-{
-  "title": "Popular Surveys",
-  "searchPlaceholder": "Search...",
-  "categoryLabel": "Category",
-  "sortOrderLabel": "Sort by",
-  "defaultSort": "Default",
-  "statusSort": "Status (Active/Closed)",
-  "categorySort": "Category",
-  "noResults": "No surveys found.",
-  "filters": {
-    "category": "Category",
-    "sortOrder": "Sort by"
-  },
-  "dropdowns": {
-    "category": {
-      "all": "All",
-      "select": "Select a Category"
+  {
+    "title": "Popular Surveys",
+    "searchPlaceholder": "Search...",
+    "categoryLabel": "Category",
+    "sortOrderLabel": "Sort by",
+    "defaultSort": "Default",
+    "statusSort": "Status (Active/Closed)",
+    "categorySort": "Category",
+    "noResults": "No surveys found.",
+    "filters": {
+      "category": "Category",
+      "sortOrder": "Sort by"
     },
-    "sortOrder": {
-      "default": "Default",
-      "status": "Status (Active/Closed)",
-      "category": "Category"
+    "dropdowns": {
+      "category": {
+        "all": "All",
+        "select": "Select a Category",
+        "transport": "Transport",
+        "infrastructure": "Infrastructure",
+        "technology": "Technology",
+        "economy": "Economy",
+        "environment": "Ambiente",
+        "health": "Health",
+        "education": "Education",
+        "culture": "Cultura",
+        "energy": "Energia"
+        
+      },
+      "statuses": {
+        "active": "Active",
+        "closed": "Ended"
+    },
+      "sortOrder": {
+        "default": "Default",
+        "status": "Status (Active/Closed)",
+        "category": "Category"
+      }
+    },
+    "surveyCard": {
+      "status": "Status",
+      "category": "Category",
+      "totalVotes": "Total Votes"
     }
-  },
-  "surveyCard": {
-    "status": "Status",
-    "category": "Category",
-    "totalVotes": "Total Votes"
   }
-}

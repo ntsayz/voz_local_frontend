@@ -13,34 +13,35 @@
     "sortOrder": "Ordenar por"
     },
     "dropdowns": {
-    "category": {
-        "all": "Todos",
-        "transport": "Transporte",
-        "infrastructure": "Infraestrutura",
-        "technology": "Tecnologia",
-        "economy": "Economia",
-        "environment": "Ambiente",
-        "health": "Saúde",
-        "education": "Educação",
-        "culture": "Cultura",
-        "energy": "Energia",
-        "select": "Selecione uma Categoria"
-    },
-    "sortOrder": {
-        "default": "Padrão",
-        "status": "Estado (Ativo/Encerrado)",
-        "category": "Categoria"
-    },
-    "statuses": {
-        "active": "Ativo",
-        "closed": "Encerrado"
-      },
+        "category": {
+            "all": "Todos",
+            "transport": "Transporte",
+            "infrastructure": "Infraestrutura",
+            "technology": "Tecnologia",
+            "economy": "Economia",
+            "environment": "Ambiente",
+            "health": "Saúde",
+            "education": "Educação",
+            "culture": "Cultura",
+            "energy": "Energia",
+            "select": "Selecione uma Categoria"
+        },
+        "sortOrder": {
+            "default": "Padrão",
+            "status": "Estado (Ativo/Encerrado)",
+            "category": "Categoria"
+        },
+        "statuses": {
+            "active": "Ativo",
+            "closed": "Encerrado"
+        },
+        
       "noResults": "Nenhuma pesquisa encontrada."
     },
     "surveyCard": {
-    "status": "Status",
-    "category": "Categoria",
-    "totalVotes": "Total de Votos"
+        "status": "Status",
+        "category": "Categoria",
+        "totalVotes": "Total de Votos"
     }
 
   }
