@@ -62,12 +62,13 @@
 </script>
 
 <nav class="bg-primary-800 shadow-md fixed top-0 left-0 w-full z-50"
-style="
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background: rgba(14, 30, 46, 0.95);
+  style="
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: rgba(14, 30, 46, 0.95);
 
-  ">
+    ">
   <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
     <!-- Logo on the far left -->
     <a href="/" class="flex-shrink-0">
@@ -127,13 +128,15 @@ style="
     <!-- Mobile Menu Button -->
     <button
       type="button"
-      class="md:hidden text-gray-200 hover:text-blue-400"
+      class="md:hidden text-gray-200 hover:text-primary-500"
       on:click={toggleMobileMenu}
     >
       <span class="sr-only">Open menu</span>
-      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
-      </svg>
+      <img
+          class="h-8 w-8 filter grayscale brightness-0 invert"
+          src="header/menu.webp"
+          alt="World"
+        />
     </button>
   </div>
 
