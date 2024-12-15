@@ -1,19 +1,16 @@
 <script lang="ts">
   import { auth, type AuthState } from '$lib/stores/auth';
-  import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import { t, locale } from 'svelte-i18n';
-
-  let isLoaded = false;
+  import { onMount, onDestroy } from 'svelte';
 
   let currentAuth: AuthState;
   let currentPath: string;
-  let isMobileMenuOpen = false;
   let isDropdownOpen = false;
   let isLocaleDropdownOpen = false;
+  let isMobileMenuOpen = false;
 
-  // Available languages
   const languages = [
     { code: 'en', label: 'English', icon: '🇬🇧' },
     { code: 'pt', label: 'Português', icon: '🇵🇹' }
@@ -27,12 +24,16 @@
     currentPath = $page.url.pathname;
   });
 
-  function toggleMobileMenu() {
-    isMobileMenuOpen = !isMobileMenuOpen;
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
   }
 
   function toggleLocaleDropdown() {
     isLocaleDropdownOpen = !isLocaleDropdownOpen;
+  }
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
   }
 
   function logout() {
@@ -42,170 +43,185 @@
     goto('/login');
   }
 
-  import { onDestroy } from 'svelte';
+  function handleClickOutside(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.locale-toggle')) {
+      isLocaleDropdownOpen = false;
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener('click', handleClickOutside);
+  });
+
+  function navigateWithAnimation(href: string) {
+    goto(href);
+  }
+
+  
   onDestroy(() => {
     unsubscribeAuth();
     unsubscribePage();
   });
 </script>
 
-<nav class="bg-gray-800 shadow-md">
-  <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="relative flex h-16 items-center justify-between">
-      <!-- Mobile Menu Button -->
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+<nav class="bg-primary-800 shadow-md fixed top-0 left-0 w-full z-50"
+  style="
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: rgba(14, 30, 46, 0.95);
+
+    ">
+  <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
+    <!-- Logo on the far left -->
+    <a href="/" class="flex-shrink-0">
+      <img class="h-8 w-auto" src="favicon.svg" alt="Voz Local" />
+    </a>
+
+    <!-- Centered Desktop Navigation Links -->
+    <nav class="hidden md:flex flex-1 justify-center space-x-4">
+      <a href="/" class="text-sm font-medium text-gray-200 hover:text-gray-400 ">
+        {$t('common.home')}
+      </a>
+      {#if currentAuth.user?.role === 'admin'}
+      <a href="/dashboard" class="text-sm font-medium text-gray-200 hover:text-gray-400">
+        {$t('common.dashboard')}
+      </a>
+      {/if}
+      <a href="/reports" class="text-sm font-medium text-gray-200 hover:text-gray-400">
+        {$t('common.reports')}
+      </a>
+      <a href="/surveys" class="text-sm font-medium text-gray-200 hover:text-gray-400">
+        {$t('common.surveys')}
+      </a>
+    </nav>
+
+    <div class="hidden md:block relative locale-toggle">
+      <button
+        aria-haspopup="true"
+        aria-expanded={isLocaleDropdownOpen}
+        class="flex items-center space-x-2 px-4 py-2"
+        on:click={toggleLocaleDropdown}
+      >
+        <!-- SVG Image with CSS filter to match text-gray-200 -->
+        <img
+          class="h-4 w-4 filter grayscale brightness-0 invert"
+          src="header/world.svg"
+          alt="World"
+        />
+      </button>
+
+      {#if isLocaleDropdownOpen}
+        <div class="absolute py-2 right-0 mt-2 w-40 bg-primary-800 text-gray-200 rounded-md shadow-lg z-50">
+          {#each languages as lang}
+            <button
+              class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-800"
+              class:bg-gray-800={lang.code === $locale}
+              on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
+            >
+              {lang.icon} {lang.label}
+            </button>
+          {/each}
+        </div>
+      {/if}
+
+    </div>
+  
+
+    <!-- Mobile Menu Button -->
+    <div class="relative md:hidden">
+      {#if isMobileMenuOpen}
+        <!-- Close Menu Button -->
         <button
           type="button"
-          class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-          aria-controls="mobile-menu"
-          aria-expanded={isMobileMenuOpen}
+          class="text-gray-200 hover:text-primary-500 transition-transform transform rotate-0 scale-100"
           on:click={toggleMobileMenu}
         >
-          <span class="sr-only">{$t('common.mobileMenu.openMenu')}</span>
-          <svg
-            class="h-6 w-6 {isMobileMenuOpen ? 'hidden' : 'block'}"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-          <svg
-            class="h-6 w-6 {isMobileMenuOpen ? 'block' : 'hidden'}"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-          </svg>
+          <span class="sr-only">Close menu</span>
+          <img
+            class="h-8 w-8 filter grayscale brightness-0 invert transition-transform transform duration-300 rotate-180"
+            src="header/close.svg"
+            alt="Close"
+          />
         </button>
-      </div>
-
-      <!-- Logo -->
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex-shrink-0">
-          <a href="/">
-            <img class="h-8 w-auto" src="favicon.svg" alt="Voz Local" />
-          </a>
-        </div>
-      </div>
-
-      <!-- Desktop Navigation Links -->
-      <div class="hidden sm:ml-6 sm:block">
-        <div class="flex space-x-4">
-          <a
-            href="/"
-            class="rounded-md px-3 py-2 text-sm font-medium 
-            {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          > {$t('common.home')}</a>
-          {#if currentAuth.user?.role === 'admin'}
-          <a
-            href="/dashboard"
-            class="rounded-md px-3 py-2 text-sm font-medium 
-            {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >{$t('common.dashboard')}</a>
-          {/if}
-          <a
-            href="/reports"
-            class="rounded-md px-3 py-2 text-sm font-medium 
-            {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >{$t('common.reports')}</a>
-          <a
-            href="/surveys"
-            class="rounded-md px-3 py-2 text-sm font-medium 
-            {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}"
-          >{$t('common.surveys')}</a>
-        </div>
-      </div>
+      {:else}
+        <!-- Open Menu Button -->
+        <button
+          type="button"
+          class="text-gray-200 hover:text-primary-500 transition-transform transform scale-100"
+          on:click={toggleMobileMenu}
+        >
+          <span class="sr-only">Open menu</span>
+          <img
+            class="h-8 w-8 filter grayscale brightness-0 invert transition-transform transform duration-300 rotate-0"
+            src="header/menu.webp"
+            alt="Menu"
+          />
+        </button>
+      {/if}
     </div>
+    
   </div>
 
-  <!-- Mobile Menu -->
-  <div
+  <!-- Mobile Navigation Menu -->
+  
+</nav>
+
+<div
     id="mobile-menu"
-    class={`fixed inset-0 z-40 bg-gray-800 bg-opacity-80 backdrop-blur-sm transform 
+    class={`fixed inset-0 z-40 bg-opacity-80 backdrop-blur-sm transform h-screen 
       ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
       transition-all duration-300 ease-in-out`}
   >
-    <div class="absolute right-0 top-0 h-full w-3/4 bg-white shadow-lg p-4">
-      <!-- Close Button -->
-      <button
-        type="button"
-        class="text-gray-500 hover:text-gray-700 focus:outline-none"
-        on:click={toggleMobileMenu}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          class="h-6 w-6"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+
+  
+    <div class="absolute right-0 top-0 h-full bg-white shadow-lg p-4"
+    style="
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: rgba(14, 30, 46, 0.95);
+       margin-top: 64px;
+    "
+    >
 
       <!-- Navigation Links -->
-      <nav class="mt-4 space-y-2">
-        <a
-          href="/"
-          class="block rounded-md px-3 py-2 text-base font-medium 
-          {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >{$t('common.home')}</a>
-        {#if currentAuth.user?.role === 'admin'}
-        <a
-          href="/dashboard"
-          class="block rounded-md px-3 py-2 text-base font-medium 
-          {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >{$t('common.dashboard')}</a>
-        {/if}
-        <a
-          href="/reports"
-          class="block rounded-md px-3 py-2 text-base font-medium 
-          {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >{$t('common.reports')}</a>
-        <a
-          href="/surveys"
-          class="block rounded-md px-3 py-2 text-base font-medium 
-          {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
-        >{$t('common.surveys')}</a>
-      </nav>
+      <nav class="mt-4 space-y-5 flex flex-col items-start text-lg">
+      <a
+        href="/"
+        on:click={() => navigateWithAnimation('/')}
+        class="font-medium text-gray-300 hover:text-gray-400"
+      >{$t('common.home')}</a>
+      {#if currentAuth.user?.role === 'admin'}
+      <a
+        href="/dashboard"
+        on:click={() => navigateWithAnimation('/dashboard')}
+        class="font-medium text-gray-300 hover:text-gray-400"
+      >{$t('common.dashboard')}</a>
+      {/if}
+      <a
+        href="/reports"
+        on:click={() => navigateWithAnimation('/reports')}
+        class="font-medium text-gray-300 hover:text-gray-400"
+      >{$t('common.reports')}</a>
+      <a
+        href="/surveys"
+        on:click={() => navigateWithAnimation('/surveys')}
+        class="font-medium text-gray-300 hover:text-gray-400"
+      >{$t('common.surveys')}</a>
+    </nav>
+      
 
       <!-- Login and Locale Dropdown -->
       <div class="mt-4 border-t border-gray-300 pt-4">
-        {#if currentAuth.user}
-        <a
-          href="/profile"
-          class="block text-sm font-medium text-gray-700 hover:text-gray-900"
-        >
-          {$t('common.profile')}
-        </a>
-        <button
-          class="block text-left text-sm font-medium text-gray-700 hover:text-gray-900"
-          on:click={logout}
-        >
-          {$t('common.logout')}
-        </button>
-        {:else}
-        <a
-          href="/login"
-          class="block text-sm font-medium text-gray-700 hover:text-gray-900"
-        >
-          {$t('common.login')}
-        </a>
-        {/if}
-
+      
         <div class="mt-2">
           <h2 class="text-sm font-medium text-gray-500">{$t('common.language')}</h2>
           <div class="space-y-2">
             {#each languages as lang}
             <button
-              class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+              class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-400"
               on:click={() => { locale.set(lang.code); toggleMobileMenu(); }}
             >
               <span class="mr-2">{lang.icon}</span>
@@ -215,6 +231,35 @@
           </div>
         </div>
       </div>
+      <div class="mt-4 flex flex-col items-stretch space-y-2 px-4">
+        {#if currentAuth.user}
+          <!-- Profile Button -->
+          <button
+            type="button"
+            class="block text-sm font-medium text-gray-700 hover:text-gray-900 bg-white rounded-md px-4 py-2 shadow"
+            on:click={() => goto('/profile')}
+          >
+            {$t('common.profile')}
+          </button>
+          <!-- Logout Button -->
+          <button
+            type="button"
+            class="block text-sm font-medium text-gray-700 hover:text-gray-900 bg-white rounded-md px-4 py-2 shadow"
+            on:click={logout}
+          >
+            {$t('common.logout')}
+          </button>
+        {:else}
+          <!-- Login Button -->
+          <button
+            type="button"
+            class="block text-sm font-medium text-gray-700 hover:text-gray-900 bg-white rounded-md px-4 py-2 shadow"
+            on:click={() => goto('/login')}
+          >
+            {$t('common.login')}
+          </button>
+        {/if}
+      </div>
+      
     </div>
   </div>
-</nav>
