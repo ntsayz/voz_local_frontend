@@ -117,7 +117,7 @@
           {#each languages as lang}
             <button
               class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-800"
-              class:bg-gray-200={lang.code === $locale}
+              class:bg-gray-800={lang.code === $locale}
               on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
             >
               {lang.icon} {lang.label}
