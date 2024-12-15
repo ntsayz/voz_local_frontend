@@ -7,44 +7,14 @@
   import SurveysSection from '$lib/components/home/SurveysSection.svelte';
   import InclusionSection from '$lib/components/home/InclusionSection.svelte';
   import CTASection from '$lib/components/home/CTASection.svelte';
-  import SurveyCard from '$lib/components/survey/SurveyCard.svelte';
   import { onMount } from 'svelte';
   import 'aos/dist/aos.css';
   // @ts-ignore
   import AOS from 'aos';
-  
+  import { mockSurveys as allMockSurveys } from '$lib/data/mock/surveys';
 
-
-  const mockSurveys = [
-    {
-      id: '1',
-      title: 'Preferências de Transporte',
-      description: 'Indique o meio de transporte que mais usa no seu dia a dia.',
-      type: 'single_choice',
-      status: 'active',
-      category: 'transport',
-      results: [
-        { label: 'Transporte público (Chapa, autocarro)', votes: 60 },
-        { label: 'Veículo pessoal', votes: 25 },
-        { label: 'Transporte privado (Táxi, Yango)', votes: 25 },
-        { label: 'A pé', votes: 20 },
-      ],
-      totalVotes: 130,
-    },
-    {
-        id: '6',
-        title: 'Percepção sobre a Transformação Digital',
-        description: 'Como é que acha que a transformação digital poderia beneficiar a sua comunidade?',
-        type: 'ranking',
-        status: 'active',
-        category: 'technology',
-        results: [
-          { label: 'Acesso a consultas e serviços de saúde online', rank: 1 },
-          { label: 'Acesso online a serviços públicos e administrativos', rank: 2 },
-          { label: 'Digitalizaçao de documentos de identificaçao', rank: 3 },
-        ],
-      },
-  ];
+  // Limit surveys to two items
+  let mockSurveys = allMockSurveys.slice(0, 2);
 
   onMount(() => {
     AOS.init({
@@ -68,7 +38,6 @@
 </main>
 <Footer />
 
-
 <style>
   main {
     padding-top: 2rem;
@@ -84,5 +53,3 @@
     filter: grayscale(0);
   }
 </style>
-
-
