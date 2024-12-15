@@ -15,4 +15,12 @@
   </main>
 
 <Footer/>
+
+<style>
+  main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 64px;
+  }
+</style>
   
