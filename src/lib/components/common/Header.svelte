@@ -143,7 +143,7 @@
   <!-- Mobile Navigation Menu -->
   <div
     id="mobile-menu"
-    class={`fixed inset-0 z-40 bg-gray-800 bg-opacity-80 backdrop-blur-sm transform 
+    class={`fixed inset-0 z-40 bg-gray-800 bg-opacity-80 backdrop-blur-sm transform h-screen 
       ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
       transition-all duration-300 ease-in-out`}
   >
