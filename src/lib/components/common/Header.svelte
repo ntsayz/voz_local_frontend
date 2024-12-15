@@ -215,34 +215,13 @@
 
       <!-- Login and Locale Dropdown -->
       <div class="mt-4 border-t border-gray-300 pt-4">
-        {#if currentAuth.user}
-        <a
-          href="/profile"
-          class="block text-sm font-medium text-gray-700 hover:text-gray-900"
-        >
-          {$t('common.profile')}
-        </a>
-        <button
-          class="block text-left text-sm font-medium text-gray-700 hover:text-gray-900"
-          on:click={logout}
-        >
-          {$t('common.logout')}
-        </button>
-        {:else}
-        <a
-          href="/login"
-          class="block text-sm font-medium text-gray-700 hover:text-gray-900"
-        >
-          {$t('common.login')}
-        </a>
-        {/if}
-
+      
         <div class="mt-2">
           <h2 class="text-sm font-medium text-gray-500">{$t('common.language')}</h2>
           <div class="space-y-2">
             {#each languages as lang}
             <button
-              class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+              class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-400"
               on:click={() => { locale.set(lang.code); toggleMobileMenu(); }}
             >
               <span class="mr-2">{lang.icon}</span>
@@ -252,5 +231,35 @@
           </div>
         </div>
       </div>
+      <div class="mt-4 flex flex-col items-stretch space-y-2 px-4">
+        {#if currentAuth.user}
+          <!-- Profile Button -->
+          <button
+            type="button"
+            class="block text-sm font-medium text-gray-700 hover:text-gray-900 bg-white rounded-md px-4 py-2 shadow"
+            on:click={() => goto('/profile')}
+          >
+            {$t('common.profile')}
+          </button>
+          <!-- Logout Button -->
+          <button
+            type="button"
+            class="block text-sm font-medium text-gray-700 hover:text-gray-900 bg-white rounded-md px-4 py-2 shadow"
+            on:click={logout}
+          >
+            {$t('common.logout')}
+          </button>
+        {:else}
+          <!-- Login Button -->
+          <button
+            type="button"
+            class="block text-sm font-medium text-gray-700 hover:text-gray-900 bg-white rounded-md px-4 py-2 shadow"
+            on:click={() => goto('/login')}
+          >
+            {$t('common.login')}
+          </button>
+        {/if}
+      </div>
+      
     </div>
   </div>
