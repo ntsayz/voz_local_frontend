@@ -102,7 +102,7 @@
       </button>
 
       {#if isLocaleDropdownOpen}
-        <div class="absolute py-2 right-0 mt-2 w-40 bg-primary-800 text-gray-200 rounded-md shadow-lg z-10">
+        <div class="absolute py-2 right-0 mt-2 w-40 bg-primary-800 text-gray-200 rounded-md shadow-lg z-50">
           {#each languages as lang}
             <button
               class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-800"
