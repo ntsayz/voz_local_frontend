@@ -73,6 +73,7 @@
   main {
     padding-top: 2rem;
     padding-bottom: 2rem;
+    margin-top: 64px;
   }
 
   img {
