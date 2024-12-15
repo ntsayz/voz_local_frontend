@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import { t, locale } from 'svelte-i18n';
+  import { onMount, onDestroy } from 'svelte';
 
   let currentAuth: AuthState;
   let currentPath: string;
@@ -42,7 +43,18 @@
     goto('/login');
   }
 
-  import { onDestroy } from 'svelte';
+  function handleClickOutside(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.locale-toggle')) {
+      isLocaleDropdownOpen = false;
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener('click', handleClickOutside);
+  });
+
+  
   onDestroy(() => {
     unsubscribeAuth();
     unsubscribePage();
@@ -51,55 +63,54 @@
 
 <nav class="bg-gray-800 shadow-md">
   <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
-    <!-- Logo -->
-    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
-      <!-- Logo on the far left -->
-      <a href="/" class="flex-shrink-0">
-        <img class="h-8 w-auto" src="favicon.svg" alt="Voz Local" />
+    <!-- Logo on the far left -->
+    <a href="/" class="flex-shrink-0">
+      <img class="h-8 w-auto" src="favicon.svg" alt="Voz Local" />
+    </a>
+
+    <!-- Centered Desktop Navigation Links -->
+    <nav class="hidden md:flex flex-1 justify-center space-x-4">
+      <a href="/" class="text-sm font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
+        {$t('common.home')}
       </a>
-  
-      <!-- Centered Desktop Navigation Links -->
-      <nav class="hidden md:flex flex-1 justify-center space-x-4">
-        <a href="/" class="text-sm font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
-          {$t('common.home')}
-        </a>
-        {#if currentAuth.user?.role === 'admin'}
-        <a href="/dashboard" class="text-sm font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
-          {$t('common.dashboard')}
-        </a>
-        {/if}
-        <a href="/reports" class="text-sm font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
-          {$t('common.reports')}
-        </a>
-        <a href="/surveys" class="text-sm font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
-          {$t('common.surveys')}
-        </a>
+      {#if currentAuth.user?.role === 'admin'}
+      <a href="/dashboard" class="text-sm font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
+        {$t('common.dashboard')}
+      </a>
+      {/if}
+      <a href="/reports" class="text-sm font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
+        {$t('common.reports')}
+      </a>
+      <a href="/surveys" class="text-sm font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
+        {$t('common.surveys')}
+      </a>
+    </nav>
+
+    <div class="hidden md:block relative locale-toggle">
+      <button
+        aria-haspopup="true"
+        aria-expanded={isLocaleDropdownOpen}
+        class="text-sm font-medium text-gray-200 hover:text-blue-400 flex items-center space-x-2"
+        on:click={toggleLocaleDropdown}
+      >
+        <span>{#if $locale === 'en'}PT{:else}EN{/if}</span>
+      </button>
+    
+      {#if isLocaleDropdownOpen}
+      <div class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
+        {#each languages as lang}
         <button
-          class="text-sm font-medium text-gray-200 hover:text-blue-400 flex items-center space-x-2 justify-right"
-          on:click={toggleLocaleDropdown}
+          class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+          on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
         >
-          <span>{#if $locale === 'en'}PT{:else}EN{/if}</span>
+          {lang.icon} {lang.label}
         </button>
-      </nav>
-  
-      <!-- Locale Toggle on the far right -->
-      <div class="flex-shrink-0">
-        
-  
-        {#if isLocaleDropdownOpen}
-        <div class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
-          {#each languages as lang}
-          <button
-            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
-          >
-            {lang.icon} {lang.label}
-          </button>
-          {/each}
-        </div>
-        {/if}
+        {/each}
       </div>
+      {/if}
     </div>
+  
+
     <!-- Mobile Menu Button -->
     <button
       type="button"
