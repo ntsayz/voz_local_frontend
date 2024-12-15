@@ -61,7 +61,12 @@
   });
 </script>
 
-<nav class="bg-primary-800 shadow-md">
+<nav class="bg-primary-800 shadow-md fixed top-0 left-0 w-full z-50"
+style="
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.2); 
+  ">
   <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
     <!-- Logo on the far left -->
     <a href="/" class="flex-shrink-0">
