@@ -81,18 +81,18 @@
 
     <!-- Centered Desktop Navigation Links -->
     <nav class="hidden md:flex flex-1 justify-center space-x-4">
-      <a href="/" class="text-sm font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}">
+      <a href="/" class="text-sm font-medium text-gray-200 hover:text-gray-400 ">
         {$t('common.home')}
       </a>
       {#if currentAuth.user?.role === 'admin'}
-      <a href="/dashboard" class="text-sm font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}">
+      <a href="/dashboard" class="text-sm font-medium text-gray-200 hover:text-gray-400">
         {$t('common.dashboard')}
       </a>
       {/if}
-      <a href="/reports" class="text-sm font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}">
+      <a href="/reports" class="text-sm font-medium text-gray-200 hover:text-gray-400">
         {$t('common.reports')}
       </a>
-      <a href="/surveys" class="text-sm font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}">
+      <a href="/surveys" class="text-sm font-medium text-gray-200 hover:text-gray-400">
         {$t('common.surveys')}
       </a>
     </nav>
@@ -191,24 +191,24 @@
       <a
         href="/"
         on:click={() => navigateWithAnimation('/')}
-        class="font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
+        class="font-medium text-gray-300 hover:text-gray-400"
       >{$t('common.home')}</a>
       {#if currentAuth.user?.role === 'admin'}
       <a
         href="/dashboard"
         on:click={() => navigateWithAnimation('/dashboard')}
-        class="font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
+        class="font-medium text-gray-300 hover:text-gray-400"
       >{$t('common.dashboard')}</a>
       {/if}
       <a
         href="/reports"
         on:click={() => navigateWithAnimation('/reports')}
-        class="font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
+        class="font-medium text-gray-300 hover:text-gray-400"
       >{$t('common.reports')}</a>
       <a
         href="/surveys"
         on:click={() => navigateWithAnimation('/surveys')}
-        class="font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
+        class="font-medium text-gray-300 hover:text-gray-400"
       >{$t('common.surveys')}</a>
     </nav>
       
@@ -221,7 +221,7 @@
           <div class="space-y-2">
             {#each languages as lang}
             <button
-              class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-400"
+              class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-400"
               on:click={() => { locale.set(lang.code); toggleMobileMenu(); }}
             >
               <span class="mr-2">{lang.icon}</span>
