@@ -57,33 +57,34 @@
     </a>
 
     <!-- Desktop Navigation Links -->
-    <nav class="hidden md:flex space-x-4">
+    <nav class="hidden md:flex flex-1 justify-center space-x-4">
       <a
         href="/"
-        class="text-sm font-medium {currentPath === '/' ? 'text-blue-600' : 'text-gray-200 hover:text-blue-400'}"
+        class="text-sm font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}"
       >
         {$t('common.home')}
       </a>
       {#if currentAuth.user?.role === 'admin'}
       <a
         href="/dashboard"
-        class="text-sm font-medium {currentPath === '/dashboard' ? 'text-blue-600' : 'text-gray-200 hover:text-blue-400'}"
+        class="text-sm font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}"
       >
         {$t('common.dashboard')}
       </a>
       {/if}
       <a
         href="/reports"
-        class="text-sm font-medium {currentPath === '/reports' ? 'text-blue-600' : 'text-gray-200 hover:text-blue-400'}"
+        class="text-sm font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}"
       >
         {$t('common.reports')}
       </a>
       <a
         href="/surveys"
-        class="text-sm font-medium {currentPath === '/surveys' ? 'text-blue-600' : 'text-gray-200 hover:text-blue-400'}"
+        class="text-sm font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}"
       >
         {$t('common.surveys')}
       </a>
+      
     </nav>
 
     <!-- Mobile Menu Button -->
