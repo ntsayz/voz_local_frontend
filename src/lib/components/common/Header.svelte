@@ -102,17 +102,19 @@
       </button>
 
       {#if isLocaleDropdownOpen}
-      <div class="absolute py-2 right-0 mt-2 w-40 bg-primary-800 text-gray-200 rounded-md shadow-lg z-10">
-        {#each languages as lang}
-        <button
-          class="block w-full text-left px-4 py-2 text-sm text-gray-200 text-gray-200 hover:bg-gray-800"
-          on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
-        >
-          {lang.icon} {lang.label}
-        </button>
-        {/each}
-      </div>
+        <div class="absolute py-2 right-0 mt-2 w-40 bg-primary-800 text-gray-200 rounded-md shadow-lg z-10">
+          {#each languages as lang}
+            <button
+              class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-800"
+              class:bg-gray-200={lang.code === $locale}
+              on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
+            >
+              {lang.icon} {lang.label}
+            </button>
+          {/each}
+        </div>
       {/if}
+
     </div>
   
 
