@@ -61,7 +61,7 @@
   });
 </script>
 
-<nav class="bg-gray-800 shadow-md">
+<nav class="bg-primary-800 shadow-md">
   <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
     <!-- Logo on the far left -->
     <a href="/" class="flex-shrink-0">
@@ -70,18 +70,18 @@
 
     <!-- Centered Desktop Navigation Links -->
     <nav class="hidden md:flex flex-1 justify-center space-x-4">
-      <a href="/" class="text-sm font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
+      <a href="/" class="text-sm font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}">
         {$t('common.home')}
       </a>
       {#if currentAuth.user?.role === 'admin'}
-      <a href="/dashboard" class="text-sm font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
+      <a href="/dashboard" class="text-sm font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}">
         {$t('common.dashboard')}
       </a>
       {/if}
-      <a href="/reports" class="text-sm font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
+      <a href="/reports" class="text-sm font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}">
         {$t('common.reports')}
       </a>
-      <a href="/surveys" class="text-sm font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-blue-400'}">
+      <a href="/surveys" class="text-sm font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}">
         {$t('common.surveys')}
       </a>
     </nav>
@@ -102,10 +102,10 @@
       </button>
 
       {#if isLocaleDropdownOpen}
-      <div class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
+      <div class="absolute py-2 right-0 mt-2 w-40 bg-primary-800 text-gray-200 rounded-md shadow-lg z-10">
         {#each languages as lang}
         <button
-          class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+          class="block w-full text-left px-4 py-2 text-sm text-gray-200 text-gray-200 hover:bg-gray-800"
           on:click={() => { locale.set(lang.code); isLocaleDropdownOpen = false; }}
         >
           {lang.icon} {lang.label}
