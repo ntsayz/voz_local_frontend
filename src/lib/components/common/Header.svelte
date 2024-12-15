@@ -55,10 +55,7 @@
   });
 
   function navigateWithAnimation(href: string) {
-    setTimeout(() => {
-      toggleMobileMenu();
-      goto(href);
-    }, 300); // Delay matches the animation duration (300ms)
+    goto(href);
   }
 
   
@@ -191,29 +188,29 @@
 
       <!-- Navigation Links -->
       <nav class="mt-4 space-y-5 flex flex-col items-start text-lg">
-        <a
-          href="/"
-          on:click={() => navigateWithAnimation('/')}
-          class="font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
-        >{$t('common.home')}</a>
-        {#if currentAuth.user?.role === 'admin'}
-        <a
-          href="/dashboard"
-          on:click={() => navigateWithAnimation('/dashboard')}
-          class="font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
-        >{$t('common.dashboard')}</a>
-        {/if}
-        <a
-          href="/reports"
-          on:click={() => navigateWithAnimation('/reports')}
-          class="font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
-        >{$t('common.reports')}</a>
-        <a
-          href="/surveys"
-          on:click={() => navigateWithAnimation('/surveys')}
-          class="font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
-        >{$t('common.surveys')}</a>
-      </nav>
+      <a
+        href="/"
+        on:click={() => navigateWithAnimation('/')}
+        class="font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
+      >{$t('common.home')}</a>
+      {#if currentAuth.user?.role === 'admin'}
+      <a
+        href="/dashboard"
+        on:click={() => navigateWithAnimation('/dashboard')}
+        class="font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
+      >{$t('common.dashboard')}</a>
+      {/if}
+      <a
+        href="/reports"
+        on:click={() => navigateWithAnimation('/reports')}
+        class="font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
+      >{$t('common.reports')}</a>
+      <a
+        href="/surveys"
+        on:click={() => navigateWithAnimation('/surveys')}
+        class="font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
+      >{$t('common.surveys')}</a>
+    </nav>
       
 
       <!-- Login and Locale Dropdown -->
