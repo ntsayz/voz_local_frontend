@@ -54,6 +54,13 @@
     window.addEventListener('click', handleClickOutside);
   });
 
+  function navigateWithAnimation(href: string) {
+    setTimeout(() => {
+      toggleMobileMenu();
+      goto(href);
+    }, 300); // Delay matches the animation duration (300ms)
+  }
+
   
   onDestroy(() => {
     unsubscribeAuth();
@@ -126,18 +133,38 @@
   
 
     <!-- Mobile Menu Button -->
-    <button
-      type="button"
-      class="md:hidden text-gray-200 hover:text-primary-500"
-      on:click={toggleMobileMenu}
-    >
-      <span class="sr-only">Open menu</span>
-      <img
-          class="h-8 w-8 filter grayscale brightness-0 invert"
-          src="header/menu.webp"
-          alt="World"
-        />
-    </button>
+    <div class="relative md:hidden">
+      {#if isMobileMenuOpen}
+        <!-- Close Menu Button -->
+        <button
+          type="button"
+          class="text-gray-200 hover:text-primary-500 transition-transform transform rotate-0 scale-100"
+          on:click={toggleMobileMenu}
+        >
+          <span class="sr-only">Close menu</span>
+          <img
+            class="h-8 w-8 filter grayscale brightness-0 invert transition-transform transform duration-300 rotate-180"
+            src="header/close.svg"
+            alt="Close"
+          />
+        </button>
+      {:else}
+        <!-- Open Menu Button -->
+        <button
+          type="button"
+          class="text-gray-200 hover:text-primary-500 transition-transform transform scale-100"
+          on:click={toggleMobileMenu}
+        >
+          <span class="sr-only">Open menu</span>
+          <img
+            class="h-8 w-8 filter grayscale brightness-0 invert transition-transform transform duration-300 rotate-0"
+            src="header/menu.webp"
+            alt="Menu"
+          />
+        </button>
+      {/if}
+    </div>
+    
   </div>
 
   <!-- Mobile Navigation Menu -->
@@ -150,57 +177,40 @@
       ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
       transition-all duration-300 ease-in-out`}
   >
-    <div class="absolute right-0 top-0 h-full w-3/4 bg-white shadow-lg p-4"
+
+  
+    <div class="absolute right-0 top-0 h-full bg-white shadow-lg p-4"
     style="
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       background: rgba(14, 30, 46, 0.95);
+       margin-top: 64px;
     "
     >
-      <!-- Close Button -->
-      <button
-        type="button"
-        class="text-gray-500 hover:text-gray-700 focus:outline-none"
-        on:click={toggleMobileMenu}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          class="h-6 w-6"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
 
       <!-- Navigation Links -->
-      <nav class="mt-4 space-y-2">
+      <nav class="mt-4 space-y-5 flex flex-col items-start text-lg">
         <a
           href="/"
-          class="block rounded-md px-3 py-2 text-base font-medium 
-          {currentPath === '/' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
+          class="font-medium {currentPath === '/' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
         >{$t('common.home')}</a>
         {#if currentAuth.user?.role === 'admin'}
         <a
           href="/dashboard"
-          class="block rounded-md px-3 py-2 text-base font-medium 
-          {currentPath === '/dashboard' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
+          class="font-medium {currentPath === '/dashboard' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
         >{$t('common.dashboard')}</a>
         {/if}
         <a
           href="/reports"
-          class="block rounded-md px-3 py-2 text-base font-medium 
-          {currentPath === '/reports' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
+          class="font-medium {currentPath === '/reports' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
         >{$t('common.reports')}</a>
         <a
           href="/surveys"
-          class="block rounded-md px-3 py-2 text-base font-medium 
-          {currentPath === '/surveys' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"
+          class="font-medium {currentPath === '/surveys' ? 'text-primary-500' : 'text-gray-200 hover:text-gray-400'}"
         >{$t('common.surveys')}</a>
       </nav>
+      
 
       <!-- Login and Locale Dropdown -->
       <div class="mt-4 border-t border-gray-300 pt-4">
