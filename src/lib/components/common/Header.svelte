@@ -34,8 +34,22 @@
   }
 
   function toggleMobileMenu() {
-    isMobileMenuOpen = !isMobileMenuOpen;
+  isMobileMenuOpen = !isMobileMenuOpen;
+  if (isMobileMenuOpen) {
+    // Lock scrolling
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+  } else {
+    // Unlock scrolling
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
   }
+  }
+
 
   function logout() {
     auth.set({ token: null, user: null });
@@ -62,6 +76,10 @@
   onDestroy(() => {
     unsubscribeAuth();
     unsubscribePage();
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
   });
 
   // Custom transition for favicon
@@ -190,6 +208,11 @@
 </nav>
 
 <div
+  id="mobile-menu-backdrop"
+  style="pointer-events: ${isMobileMenuOpen ? 'auto' : 'none'};"
+>
+
+<div
     id="mobile-menu"
     class={`fixed inset-0 z-40 bg-opacity-80 backdrop-blur-sm transform h-screen 
       ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
@@ -284,7 +307,7 @@
     </div>
   </div>
 
-
+</div>
 <style>
   .favicon {
     display: block;
