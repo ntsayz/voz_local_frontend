@@ -7,6 +7,7 @@
   export let colorScale: (count: number) => string = (count) => '#ccc';
   export let onProvinceClick: (id: string) => void = () => {};
   export let tooltipFormatter: (id: string) => string = (id) => '';
+  export let notifications : string[];
 
   let scale = 1;
   let translateX = 0;
@@ -17,18 +18,7 @@
   let lastMouseX = 0;
   let lastMouseY = 0;
 
-  let notifications = [
-    "Cidade de Maputo: Corte de energia no Bairro de Maxaquene devido a avaria técnica. EDM informada.",
-    "Cabo Delgado: Chuvas intensas previstas. Alerta para inundações.",
-    "Nampula: Obras no Km 200 da N104 causam trânsito em Mómula.",
-    "Sofala: Caminão avariado na EN6 provoca filas em Dondo.",
-    "Inhambane: Abastecimento de água interrompido em Maxixe para manutenção. FIPAG informado.",
-    "Gaza: Forte vento danifica telhados na região de Chibuto. Equipas de emergência acionadas.",
-    "Zambézia: Ponte sobre o rio Licungo sob inspeção. Rota alternativa sugerida.",
-    "Tete: Interrupção de rede de telefonia em Moatize devido a falha técnica. Operadora notificada.",
-    "Niassa: Registo de incêndio florestal próximo a Lichinga. Autoridades em alerta.",
-    "Manica: Deslizamento de terra afeta EN7 perto de Machipanda. Trânsito condicionado."
-    ];
+  
 
 
 
@@ -73,11 +63,7 @@
   on:mouseleave={endDrag}
   on:mousemove={handleMouseMove}
 >
-<NotificationContainer
-    {notifications}
-    entryDirection="top"
-    cycleInterval={5000}
-  />
+
   <!-- Map Content -->
   <div
     class="map-inner"

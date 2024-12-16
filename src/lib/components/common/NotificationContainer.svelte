@@ -9,6 +9,7 @@
     export let borderColor = "rgba(0, 0, 0, 0.2)"; // Default border color
     export let shadowColor = "rgba(0, 0, 0, 0.1)"; // Default shadow color
     export let blurAmount = 10; // Default blur intensity
+    export let marginTop: string = '0px';
     
     let currentNotificationIndex = 0;
 
@@ -32,6 +33,8 @@
       border-color: {borderColor};
       box-shadow: 0 4px 6px {shadowColor};
       backdrop-filter: blur({blurAmount}px);
+      margin-top: {marginTop};
+      
     "
     on:mouseenter={() => onHover?.()}
     on:click={() => onClick?.()}

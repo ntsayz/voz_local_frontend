@@ -11,10 +11,17 @@
 
   let reportsData = {};
   let notifications = [
-    "Breaking News: Event 1 happened!",
-    "Update: Event 2 just occurred!",
-    "Alert: Event 3 is ongoing!"
-  ];
+    "Cidade de Maputo: Corte de energia no Bairro de Maxaquene devido a avaria técnica. EDM informada.",
+    "Cabo Delgado: Chuvas intensas previstas. Alerta para inundações.",
+    "Nampula: Obras no Km 200 da N104 causam trânsito em Mómula.",
+    "Sofala: Caminão avariado na EN6 provoca filas em Dondo.",
+    "Inhambane: Abastecimento de água interrompido em Maxixe para manutenção. FIPAG informado.",
+    "Gaza: Forte vento danifica telhados na região de Chibuto. Equipas de emergência acionadas.",
+    "Zambézia: Ponte sobre o rio Licungo sob inspeção. Rota alternativa sugerida.",
+    "Tete: Interrupção de rede de telefonia em Moatize devido a falha técnica. Operadora notificada.",
+    "Niassa: Registo de incêndio florestal próximo a Lichinga. Autoridades em alerta.",
+    "Manica: Deslizamento de terra afeta EN7 perto de Machipanda. Trânsito condicionado."
+    ];
   let selectedProvince: string | null = null;
 
   onMount(async () => {
@@ -35,15 +42,22 @@
   }
 </script>
 
-<div class="layout">
+
   <Header />
-  <main>
+  <main class="min-h-screen">
+    <NotificationContainer
+    {notifications}
+    entryDirection="top"
+    cycleInterval={5000}
+    marginTop="64px"
+  />
     <MapContainer
       {provinces}
       {colorScale}
       data={reportsData}
       onProvinceClick={handleProvinceClick}
       tooltipFormatter={(id) => `${reportsData[id]?.count || 0} reports`}
+      notifications={notifications}
     />
     <ProvinceModal
       {selectedProvince}
@@ -53,14 +67,9 @@
     />
   </main>
   <Footer />
-</div>
+
 
 <style>
-  .layout {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
 
   main {
     padding-top: 2rem;
