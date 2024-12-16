@@ -241,11 +241,11 @@ class="font-geist"
     ">
 
       <!-- Navigation Links -->
-      <nav class="font-geist mt-4 space-y-5 flex flex-col items-start text-lg">
+      <nav class="font-geist font-light mt-4 space-y-5 flex flex-col items-start text-lg">
       <a
         href="/"
         on:click={() => navigateWithAnimation('/')}
-        class="font-light text-gray-300 hover:text-gray-400 nav-link"
+        class="font-light text-gray-300 hover:text-gray-400"
         style="font-family: 'Geist', sans-serif;"
       >{$t('common.home')}</a>
       {#if currentAuth.user?.role === 'admin'}
@@ -259,27 +259,27 @@ class="font-geist"
       <a
         href="/reports"
         on:click={() => navigateWithAnimation('/reports')}
-        class="font-medium text-gray-300 hover:text-gray-400"
+        class="font-light text-gray-300 hover:text-gray-400"
         style="font-family: 'Geist', sans-serif;"
       >{$t('common.reports')}</a>
       <a
         href="/surveys"
         on:click={() => navigateWithAnimation('/surveys')}
-        class="font-medium text-gray-300 hover:text-gray-400"
+        class="font-light text-gray-300 hover:text-gray-400"
         style="font-family: 'Geist', sans-serif;"
       >{$t('common.surveys')}</a>
     </nav>
       
 
       <!-- Login and Locale Dropdown -->
-      <div class="mt-4 border-t border-gray-300 pt-4">
+      <div class="font-geist font-light mt-4 border-t border-gray-300 pt-4">
       
         <div class="mt-2">
-          <h2 class="text-sm font-medium text-gray-500">{$t('common.language')}</h2>
+          <h2 class="text-sm text-gray-500">{$t('common.language')}</h2>
           <div class="space-y-2">
             {#each languages as lang}
             <button
-              class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-400"
+              class="flex items-center w-full px-3 py-2 text-base text-gray-300 hover:bg-gray-400"
               on:click={() => { locale.set(lang.code); toggleMobileMenu(); }}
             >
               <span class="mr-2">{lang.icon}</span>
