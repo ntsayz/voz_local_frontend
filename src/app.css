@@ -1,5 +1,72 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import 'tailwindcss/utilities'
+@import 'tailwindcss/utilities';
 
 
+@font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/otf/Geist-Thin.otf') format('opentype');
+    font-weight: 100; /* Thin */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/otf/Geist-ExtraLight.otf') format('opentype');
+    font-weight: 200; /* Extra Light */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/otf/Geist-Light.otf') format('opentype');
+    font-weight: 300; /* Light */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/otf/Geist-Regular.otf') format('opentype');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/otf/Geist-Medium.otf') format('opentype');
+    font-weight: 500; /* Medium */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/otf/Geist-SemiBold.otf') format('opentype');
+    font-weight: 600; /* Semi Bold */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/otf/Geist-Bold.otf') format('opentype');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/otf/Geist-ExtraBold.otf') format('opentype');
+    font-weight: 800; /* Extra Bold */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/otf/Geist-Black.otf') format('opentype');
+    font-weight: 900; /* Black */
+    font-style: normal;
+  }
+  
+  body {
+    @apply font-geist;
+  }
+  

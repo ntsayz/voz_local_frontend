@@ -4,6 +4,7 @@
   import { page } from '$app/stores';
   import { t, locale } from 'svelte-i18n';
   import { onMount, onDestroy } from 'svelte';
+  import { cubicOut } from 'svelte/easing';
 
   let currentAuth: AuthState;
   let currentPath: string;
@@ -31,10 +32,30 @@
   function toggleLocaleDropdown() {
     isLocaleDropdownOpen = !isLocaleDropdownOpen;
   }
+  let scrollY = 0;
 
   function toggleMobileMenu() {
-    isMobileMenuOpen = !isMobileMenuOpen;
+  isMobileMenuOpen = !isMobileMenuOpen;
+  if (isMobileMenuOpen) {
+    // Lock scrolling
+    scrollY = window.scrollY;
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+  } else {
+    // Unlock scrolling
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
   }
+  }
+
 
   function logout() {
     auth.set({ token: null, user: null });
@@ -58,26 +79,54 @@
     goto(href);
   }
 
-  
   onDestroy(() => {
     unsubscribeAuth();
     unsubscribePage();
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollY);
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
   });
+
+  // Custom transition for favicon
+  function faviconTransition(node, { delay = 0, duration = 600, easing = cubicOut }) {
+    return {
+      delay,
+      duration,
+      easing,
+      css: (t: number) => `
+        opacity: ${t};
+        transform: scale(${1 + t * 0.2});
+      `
+    };
+  }
 </script>
 
-<nav class="bg-primary-800 shadow-md fixed top-0 left-0 w-full z-50"
+<nav class="bg-primary-800 font-geist shadow-md fixed top-0 left-0 w-full z-50"
   style="
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       background: rgba(14, 30, 46, 0.95);
-
     ">
   <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
     <!-- Logo on the far left -->
     <a href="/" class="flex-shrink-0">
-      <img class="h-8 w-auto" src="favicon.svg" alt="Voz Local" />
+      {#if !isMobileMenuOpen}
+        <img
+          class="h-8 w-auto favicon"
+          src="favicon.svg"
+          alt="Voz Local"
+          in:faviconTransition
+          out:faviconTransition
+        />
+      {/if}
     </a>
+    
 
     <!-- Centered Desktop Navigation Links -->
     <nav class="hidden md:flex flex-1 justify-center space-x-4">
@@ -135,7 +184,7 @@
         <!-- Close Menu Button -->
         <button
           type="button"
-          class="text-gray-200 hover:text-primary-500 transition-transform transform rotate-0 scale-100"
+          class="text-gray-200 hover:text-primary-500 transition-transform transform duration-300"
           on:click={toggleMobileMenu}
         >
           <span class="sr-only">Close menu</span>
@@ -149,7 +198,7 @@
         <!-- Open Menu Button -->
         <button
           type="button"
-          class="text-gray-200 hover:text-primary-500 transition-transform transform scale-100"
+          class="text-gray-200 hover:text-primary-500 transition-transform transform duration-300"
           on:click={toggleMobileMenu}
         >
           <span class="sr-only">Open menu</span>
@@ -169,46 +218,55 @@
 </nav>
 
 <div
+class="font-geist"
+  id="mobile-menu-backdrop"
+  style="pointer-events: ${isMobileMenuOpen ? 'auto' : 'none'};"
+>
+
+<div
     id="mobile-menu"
     class={`fixed inset-0 z-40 bg-opacity-80 backdrop-blur-sm transform h-screen 
-      ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
-      transition-all duration-300 ease-in-out`}
+      ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
+      transition-all duration-500 linear`}
   >
 
   
-    <div class="absolute right-0 top-0 h-full bg-white shadow-lg p-4"
+    <div class="absolute right-0 top-0 w-full h-full bg-white shadow-lg p-4"
     style="
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       background: rgba(14, 30, 46, 0.95);
-       margin-top: 64px;
-    "
-    >
+       margin-top: 60px;
+    ">
 
       <!-- Navigation Links -->
-      <nav class="mt-4 space-y-5 flex flex-col items-start text-lg">
+      <nav class="font-geist mt-4 space-y-5 flex flex-col items-start text-lg">
       <a
         href="/"
         on:click={() => navigateWithAnimation('/')}
-        class="font-medium text-gray-300 hover:text-gray-400"
+        class="font-light text-gray-300 hover:text-gray-400 nav-link"
+        style="font-family: 'Geist', sans-serif;"
       >{$t('common.home')}</a>
       {#if currentAuth.user?.role === 'admin'}
       <a
         href="/dashboard"
         on:click={() => navigateWithAnimation('/dashboard')}
-        class="font-medium text-gray-300 hover:text-gray-400"
+        class="font-light text-gray-300 hover:text-gray-400"
+        style="font-family: 'Geist', sans-serif;"
       >{$t('common.dashboard')}</a>
       {/if}
       <a
         href="/reports"
         on:click={() => navigateWithAnimation('/reports')}
         class="font-medium text-gray-300 hover:text-gray-400"
+        style="font-family: 'Geist', sans-serif;"
       >{$t('common.reports')}</a>
       <a
         href="/surveys"
         on:click={() => navigateWithAnimation('/surveys')}
         class="font-medium text-gray-300 hover:text-gray-400"
+        style="font-family: 'Geist', sans-serif;"
       >{$t('common.surveys')}</a>
     </nav>
       
@@ -263,3 +321,15 @@
       
     </div>
   </div>
+
+</div>
+<style>
+  .favicon {
+    display: block;
+    will-change: transform, opacity;
+  }
+  .nav-link {
+  @apply font-geist font-medium text-gray-300 hover:text-gray-400;
+}
+
+</style>
