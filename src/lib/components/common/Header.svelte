@@ -32,21 +32,27 @@
   function toggleLocaleDropdown() {
     isLocaleDropdownOpen = !isLocaleDropdownOpen;
   }
+  let scrollY = 0;
 
   function toggleMobileMenu() {
   isMobileMenuOpen = !isMobileMenuOpen;
   if (isMobileMenuOpen) {
     // Lock scrolling
+    scrollY = window.scrollY;
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
     document.body.style.width = '100%';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
   } else {
     // Unlock scrolling
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     document.body.style.position = '';
     document.body.style.width = '';
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
   }
   }
 
@@ -76,6 +82,10 @@
   onDestroy(() => {
     unsubscribeAuth();
     unsubscribePage();
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollY);
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     document.body.style.position = '';
