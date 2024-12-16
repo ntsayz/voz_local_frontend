@@ -63,6 +63,9 @@
   }
 
   main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 40px;
     flex: 1;
     display: flex;
     justify-content: center;

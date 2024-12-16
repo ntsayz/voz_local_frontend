@@ -38,7 +38,15 @@
 </div>
 
 <!-- Footer -->
-<footer class="bg-gray-800">
+<footer class=""
+style="
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: rgba(14, 30, 46, 0.95);
+
+    "
+>
   <div class="container mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row justify-between items-center">
       <!-- Footer Branding -->

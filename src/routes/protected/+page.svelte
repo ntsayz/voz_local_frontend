@@ -10,4 +10,12 @@
       <p class="text-lg text-gray-700">You must be logged in to see this content.</p>
     </div>
   </main>
+
+  <style>
+    main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 64px;
+  }
+  </style>
   
