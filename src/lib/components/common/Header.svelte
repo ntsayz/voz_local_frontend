@@ -76,8 +76,13 @@
   <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
     <!-- Logo on the far left -->
     <a href="/" class="flex-shrink-0">
-      <img class="h-8 w-auto" src="favicon.svg" alt="Voz Local" />
+      <img
+        class="h-8 w-auto favicon {isMobileMenuOpen ? 'hidden' : ''}"
+        src="favicon.svg"
+        alt="Voz Local"
+      />
     </a>
+    
 
     <!-- Centered Desktop Navigation Links -->
     <nav class="hidden md:flex flex-1 justify-center space-x-4">
@@ -263,3 +268,21 @@
       
     </div>
   </div>
+
+
+  <style>
+    .favicon {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+      transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+      .favicon.hidden {
+      opacity: 0;
+      transform: rotate(-180deg) scale(0.6);
+      pointer-events: none; /* Prevent interactions while hidden */
+    }
+  </style>
+  
+  
+  
