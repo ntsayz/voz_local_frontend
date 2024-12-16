@@ -106,7 +106,7 @@
   }
 </script>
 
-<nav class="bg-primary-800 shadow-md fixed top-0 left-0 w-full z-50"
+<nav class="bg-primary-800 font-geist shadow-md fixed top-0 left-0 w-full z-50"
   style="
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
@@ -218,6 +218,7 @@
 </nav>
 
 <div
+class="font-geist"
   id="mobile-menu-backdrop"
   style="pointer-events: ${isMobileMenuOpen ? 'auto' : 'none'};"
 >
@@ -240,28 +241,32 @@
     ">
 
       <!-- Navigation Links -->
-      <nav class="mt-4 space-y-5 flex flex-col items-start text-lg">
+      <nav class="font-geist mt-4 space-y-5 flex flex-col items-start text-lg">
       <a
         href="/"
         on:click={() => navigateWithAnimation('/')}
-        class="font-medium text-gray-300 hover:text-gray-400"
+        class="font-light text-gray-300 hover:text-gray-400 nav-link"
+        style="font-family: 'Geist', sans-serif;"
       >{$t('common.home')}</a>
       {#if currentAuth.user?.role === 'admin'}
       <a
         href="/dashboard"
         on:click={() => navigateWithAnimation('/dashboard')}
-        class="font-medium text-gray-300 hover:text-gray-400"
+        class="font-light text-gray-300 hover:text-gray-400"
+        style="font-family: 'Geist', sans-serif;"
       >{$t('common.dashboard')}</a>
       {/if}
       <a
         href="/reports"
         on:click={() => navigateWithAnimation('/reports')}
         class="font-medium text-gray-300 hover:text-gray-400"
+        style="font-family: 'Geist', sans-serif;"
       >{$t('common.reports')}</a>
       <a
         href="/surveys"
         on:click={() => navigateWithAnimation('/surveys')}
         class="font-medium text-gray-300 hover:text-gray-400"
+        style="font-family: 'Geist', sans-serif;"
       >{$t('common.surveys')}</a>
     </nav>
       
@@ -323,4 +328,8 @@
     display: block;
     will-change: transform, opacity;
   }
+  .nav-link {
+  @apply font-geist font-medium text-gray-300 hover:text-gray-400;
+}
+
 </style>

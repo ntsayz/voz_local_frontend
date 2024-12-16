@@ -4,13 +4,13 @@
   
   <div>
     <h1 
-      class="text-4xl font-extrabold mb-6 text-primary-500 leading-tight"
+      class="text-4xl font-bold  mb-6 text-primary-500 leading-tight"
       data-aos="fade-up"
     >
       {$t('home.welcome')}
     </h1>
     <p 
-      class="text-lg text-gray-700 font-medium leading-relaxed mb-8"
+      class="text-lg text-gray-700 leading-relaxed mb-8"
       data-aos="fade-up"
       data-aos-delay="200"
     >

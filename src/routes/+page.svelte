@@ -27,7 +27,7 @@
 </script>
 
 <Header />
-<main class="min-h-screen flex items-center justify-center bg-gray-100 px-4 md:px-8">
+<main class="min-h-screen font-light flex items-center justify-center bg-gray-100 px-4 md:px-8">
   <div class="text-center max-w-4xl">
     <MainHeading />
     <FeaturesSection />

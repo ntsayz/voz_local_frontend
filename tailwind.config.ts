@@ -106,6 +106,9 @@ export default {
           900: '#130B0E',
         },
       },
+      fontFamily: {
+        geist: ['Geist', 'sans-serif'],
+      },
     },
   },
 
