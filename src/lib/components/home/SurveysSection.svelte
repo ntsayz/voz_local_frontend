@@ -95,8 +95,8 @@
 
 @media (min-width: 1024px) {
   .horizontal-scroll-container > div {
-    min-width: 50%; /* Larger screens: show 50% of card */
-    max-width: 50%;
+    min-width: 49%; /* Larger screens: show 50% of card */
+    max-width: 49%;
   }
 }
 
