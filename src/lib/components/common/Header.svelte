@@ -4,6 +4,7 @@
   import { page } from '$app/stores';
   import { t, locale } from 'svelte-i18n';
   import { onMount, onDestroy } from 'svelte';
+  import { cubicOut } from 'svelte/easing';
 
   let currentAuth: AuthState;
   let currentPath: string;
@@ -58,11 +59,23 @@
     goto(href);
   }
 
-  
   onDestroy(() => {
     unsubscribeAuth();
     unsubscribePage();
   });
+
+  // Custom transition for favicon
+  function faviconTransition(node, { delay = 0, duration = 600, easing = cubicOut }) {
+    return {
+      delay,
+      duration,
+      easing,
+      css: (t: number) => `
+        opacity: ${t};
+        transform: scale(${1 + t * 0.2});
+      `
+    };
+  }
 </script>
 
 <nav class="bg-primary-800 shadow-md fixed top-0 left-0 w-full z-50"
@@ -71,16 +84,19 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       background: rgba(14, 30, 46, 0.95);
-
     ">
   <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
     <!-- Logo on the far left -->
     <a href="/" class="flex-shrink-0">
-      <img
-        class="h-8 w-auto favicon {isMobileMenuOpen ? 'hidden' : ''}"
-        src="favicon.svg"
-        alt="Voz Local"
-      />
+      {#if !isMobileMenuOpen}
+        <img
+          class="h-8 w-auto favicon"
+          src="favicon.svg"
+          alt="Voz Local"
+          in:faviconTransition
+          out:faviconTransition
+        />
+      {/if}
     </a>
     
 
@@ -140,7 +156,7 @@
         <!-- Close Menu Button -->
         <button
           type="button"
-          class="text-gray-200 hover:text-primary-500 transition-transform transform rotate-0 scale-100"
+          class="text-gray-200 hover:text-primary-500 transition-transform transform duration-300"
           on:click={toggleMobileMenu}
         >
           <span class="sr-only">Close menu</span>
@@ -154,7 +170,7 @@
         <!-- Open Menu Button -->
         <button
           type="button"
-          class="text-gray-200 hover:text-primary-500 transition-transform transform scale-100"
+          class="text-gray-200 hover:text-primary-500 transition-transform transform duration-300"
           on:click={toggleMobileMenu}
         >
           <span class="sr-only">Open menu</span>
@@ -188,8 +204,7 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       background: rgba(14, 30, 46, 0.95);
        margin-top: 64px;
-    "
-    >
+    ">
 
       <!-- Navigation Links -->
       <nav class="mt-4 space-y-5 flex flex-col items-start text-lg">
@@ -270,19 +285,9 @@
   </div>
 
 
-  <style>
-    .favicon {
-      opacity: 1;
-      transform: rotate(0deg) scale(1);
-      transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1),
-                  transform 2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-      .favicon.hidden {
-      opacity: 0;
-      transform: rotate(-180deg) scale(0.6);
-      pointer-events: none; /* Prevent interactions while hidden */
-    }
-  </style>
-  
-  
-  
+<style>
+  .favicon {
+    display: block;
+    will-change: transform, opacity;
+  }
+</style>
