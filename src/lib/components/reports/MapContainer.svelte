@@ -12,7 +12,7 @@
   let scale = 1;
   let translateX = 0;
   let translateY = 0;
-  const minScale = 1;
+  const minScale = 0.6;
   const maxScale = 4;
   let isDragging = false;
   let lastMouseX = 0;
