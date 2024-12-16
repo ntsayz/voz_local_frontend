@@ -192,18 +192,18 @@
 <div
     id="mobile-menu"
     class={`fixed inset-0 z-40 bg-opacity-80 backdrop-blur-sm transform h-screen 
-      ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
-      transition-all duration-300 ease-in-out`}
+      ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
+      transition-all duration-500 linear`}
   >
 
   
-    <div class="absolute right-0 top-0 h-full bg-white shadow-lg p-4"
+    <div class="absolute right-0 top-0 w-full h-full bg-white shadow-lg p-4"
     style="
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       background: rgba(14, 30, 46, 0.95);
-       margin-top: 64px;
+       margin-top: 60px;
     ">
 
       <!-- Navigation Links -->
